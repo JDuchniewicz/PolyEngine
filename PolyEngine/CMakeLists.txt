@@ -11,6 +11,7 @@ include(${ENGINE_ROOT_DIR}/CMakeListsCommon.txt)
 ##
 # Finally, meat and potatoes
 ##
+add_subdirectory(ThirdParty)
 add_subdirectory(Core)
 add_subdirectory(Editor)
 add_subdirectory(Engine)
