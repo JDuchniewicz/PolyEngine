@@ -1,4 +1,3 @@
-find_package(assimp REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(OpenAL REQUIRED)
 find_package(OGG REQUIRED)
@@ -19,8 +18,8 @@ GenerateSourceGoups("${POLYENGINE_SRCS}")
 
 add_library(PolyEngine SHARED ${POLYENGINE_SRCS})
 target_compile_definitions(PolyEngine PRIVATE _ENGINE)
-target_include_directories(PolyEngine PUBLIC ${POLYENGINE_INCLUDE} ${BULLET_INCLUDE_DIRS} ${STB_INCLUDE_DIRS})
-target_link_libraries(PolyEngine PUBLIC PolyCore PRIVATE ass::imp Freetype::FT2 OpenAL::AL OGG::OGG Vorbis::Vorbis Vorbis::File Box2D::Box2D Rapid::JSON ${BULLET_LIBRARIES})
+target_include_directories(PolyEngine PUBLIC ${POLYENGINE_INCLUDE} ${BULLET_INCLUDE_DIRS} ${STB_INCLUDE_DIRS} ${LIBASSIMP_INCLUDE})
+target_link_libraries(PolyEngine PUBLIC PolyCore PRIVATE LibAssimp Freetype::FT2 OpenAL::AL OGG::OGG Vorbis::Vorbis Vorbis::File Box2D::Box2D Rapid::JSON ${BULLET_LIBRARIES})
 
 if(GENERATE_COVERAGE AND (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"))
 	target_compile_options(PolyEngine PRIVATE --coverage -fprofile-arcs -ftest-coverage)
