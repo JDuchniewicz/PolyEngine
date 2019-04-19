@@ -10,15 +10,17 @@ namespace Poly
 	class ComponentBase;
 	template<typename PrimaryComponent, typename... SecondaryComponents>
 	struct IteratorProxy;
+	class IAllocatorIterator;
 
 	class IEntityIteratorPolicy : public BaseObject<>
 	{
 		public:
 			virtual bool operator==(const IEntityIteratorPolicy&) const = 0;
 			virtual bool operator!=(const IEntityIteratorPolicy&) const = 0;
-			virtual Entity* Get() const = 0;
+			virtual Entity* GetEntity() const = 0;
 			virtual void Increment() = 0;
 			virtual bool IsValid() const = 0;
+			virtual IAllocatorIterator* Get() const = 0;
 	};
 
 	template<typename PrimaryComponent, typename... SecondaryComponents>
@@ -31,12 +33,12 @@ namespace Poly
 				//UpdateIterator();
 			}
 
-			bool operator==(const  ComponentIterator& rhs) const { return GetIteratorPolicy()->Get() == rhs.GetIteratorPolicy()->Get(); } 
-			bool operator!=(const  ComponentIterator& rhs) const { return !(GetIteratorPolicy()->Get() == rhs.GetIteratorPolicy()->Get()); }
+			bool operator==(const  ComponentIterator& rhs) const { return *GetIteratorPolicy() == *rhs.GetIteratorPolicy(); } 
+			bool operator!=(const  ComponentIterator& rhs) const { return !(*GetIteratorPolicy() == *rhs.GetIteratorPolicy()); }
 
 			const std::tuple<typename std::add_pointer<PrimaryComponent>::type, typename std::add_pointer<SecondaryComponents>::type... > operator*() const 
 			{
-				Entity* ent = GetIteratorPolicy()->Get();
+				Entity* ent = GetIteratorPolicy()->GetEntity();
 				PrimaryComponent* primary = ent->GetComponent<PrimaryComponent>();
 				return std::make_tuple(primary, primary->template GetSibling<SecondaryComponents>()...);
 			}
@@ -57,9 +59,9 @@ namespace Poly
 		private:
 			void Increment()
 			{
-				Entity* ent = GetIteratorPolicy()->Get();
-				PrimaryComponent* primary = ent->GetComponent<PrimaryComponent>();
-				ASSERTE(primary, "Primary component is nullptr!");
+				//Entity* ent = GetIteratorPolicy()->GetEntity();
+				//PrimaryComponent* primary = ent->GetComponent<PrimaryComponent>();
+				//ASSERTE(primary, "Primary component is nullptr!");
 
 				GetIteratorPolicy()->Increment();
 				UpdateIterator();
@@ -67,11 +69,11 @@ namespace Poly
 			
 			void UpdateIterator()
 			{
-				Entity* ent = GetIteratorPolicy()->Get();
+				Entity* ent = GetIteratorPolicy()->GetEntity();
 				while ( GetIteratorPolicy()->IsValid() && !HasComponents<PrimaryComponent, SecondaryComponents...>(ent) )
 				{
 					GetIteratorPolicy()->Increment();
-					ent = GetIteratorPolicy()->Get();					
+					ent = GetIteratorPolicy()->GetEntity();					
 				}
 			}
 

@@ -28,23 +28,28 @@ SceneComponentIteratorPolicy SceneComponentIteratorPolicy::ConstructEnd(Entity* 
 
 bool SceneComponentIteratorPolicy::operator==(const IEntityIteratorPolicy& rhs) const
 {
-    return Match == rhs.Get();
+    return Iterator.get() == rhs.Get();
 }
 
 bool SceneComponentIteratorPolicy::operator!=(const IEntityIteratorPolicy& rhs) const
 {
-    return !(Match == rhs.Get()); // can move to interface after it works
+    return !(Iterator.get() == rhs.Get()); // can move to interface after it works
 }
 
-Entity* SceneComponentIteratorPolicy::Get() const
+Entity* SceneComponentIteratorPolicy::GetEntity() const
 {
     return Match;
 }
 
+IAllocatorIterator* SceneComponentIteratorPolicy::Get() const
+{
+    return Iterator.get();
+} 
+
 void SceneComponentIteratorPolicy::Increment()
 {
     Iterator->increment();
-    Match = reinterpret_cast<ComponentBase*>(Iterator->data())->GetOwner();
+    Match = reinterpret_cast<ComponentBase*>(Iterator->data())->GetOwner(); //with current implementation asserts when iterated through whole range 
 }
 
 bool SceneComponentIteratorPolicy::IsValid() const 

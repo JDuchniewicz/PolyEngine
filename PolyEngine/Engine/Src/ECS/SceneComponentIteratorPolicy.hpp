@@ -15,9 +15,10 @@ namespace Poly
             static SceneComponentIteratorPolicy ConstructEnd(Entity* entity, size_t primaryComponentID);
             bool operator==(const IEntityIteratorPolicy& rhs) const override;
             bool operator!=(const IEntityIteratorPolicy& rhs) const override;
-            Entity* Get() const override;
+            Entity* GetEntity() const override;
             void Increment() override;
             bool IsValid() const override;
+            IAllocatorIterator* Get() const override;
         private:
             SceneComponentIteratorPolicy(Entity* entity, std::unique_ptr<IAllocatorIterator> begin, std::unique_ptr<IAllocatorIterator> end);
             Entity* Match;
