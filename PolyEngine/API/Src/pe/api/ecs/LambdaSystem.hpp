@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ISystem.hpp>
+#include <pe/api/ecs/ISystem.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	class Scene;
 	using PhaseUpdateFunction = std::function<void(Scene*)>;

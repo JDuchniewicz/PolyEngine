@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/RenderingSystem.hpp>
-#include <Rendering/IRenderingDevice.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/rendering/RenderingSystem.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
 void RenderingSystem::RenderingPhase(Scene* world)
 {	

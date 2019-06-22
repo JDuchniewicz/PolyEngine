@@ -1,16 +1,16 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Rendering/Camera/CameraSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/rendering/camera/CameraSystem.hpp>
 
-namespace Poly {
+namespace pe::api::rendering {
 
 	class ENGINE_DLLEXPORT PostprocessSettingsComponent : public ComponentBase
 	{
 		friend void CameraSystem::CameraUpdatePhase(Scene*);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::PostprocessSettingsComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::PostprocessSettingsComponent) { NO_RTTI_PROPERTY(); }
 
 		float Exposure = 1.0f;
 

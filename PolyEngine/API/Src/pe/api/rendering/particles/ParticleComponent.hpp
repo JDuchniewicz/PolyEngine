@@ -1,17 +1,17 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Rendering/RenderingSystem.hpp>
-#include <Rendering/Particles/ParticleEmitter.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/rendering/renderingSystem.hpp>
+#include <pe/api/rendering/particles/ParticleEmitter.hpp>
 
-namespace Poly {
+namespace pe::api::rendering::particles {
 
 	class ENGINE_DLLEXPORT ParticleComponent : public ComponentBase
 	{
 		friend void ParticleUpdateSystem::ParticleUpdatePhase(Scene*);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::ParticleComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::particles::ParticleComponent) { NO_RTTI_PROPERTY(); }
 
 		ParticleComponent(const ParticleEmitter::Settings& emitter);
 		virtual ~ParticleComponent();

@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Resources/ResourceBase.hpp>
+#include <pe/api/resources/ResourceBase.hpp>
 
 typedef unsigned int GLuint;
 
-namespace Poly 
+namespace pe::api::resources 
 {
 	class ITextureDeviceProxy;
 	enum class eTextureUsageType;

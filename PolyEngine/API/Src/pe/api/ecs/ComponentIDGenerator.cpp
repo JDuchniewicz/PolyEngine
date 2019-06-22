@@ -1,15 +1,16 @@
 #include <EnginePCH.hpp>
-#include <ECS/ComponentIDGenerator.hpp>
 
-using namespace Poly;
+#include <pe/api/ecs/ComponentIDGenerator.hpp>
 
-Poly::ComponentManager& Poly::ComponentManager::Get()
+using namespace pe::api::ecs;
+
+pe::api::ecs::ComponentManager& pe::api::ecs::ComponentManager::Get()
 {
 	static ComponentManager instance;
 	return instance;
 }
 
-Optional<size_t> Poly::ComponentManager::GetComponentID(const RTTI::TypeInfo& typeinfo) const
+Optional<size_t> pe::api::ecs::ComponentManager::GetComponentID(const RTTI::TypeInfo& typeinfo) const
 {
 	const auto& it = TypeToIDMap.find(typeinfo);
 	if (it == TypeToIDMap.end())
@@ -17,7 +18,7 @@ Optional<size_t> Poly::ComponentManager::GetComponentID(const RTTI::TypeInfo& ty
 	return it->second;
 }
 
-Poly::RTTI::TypeInfo Poly::ComponentManager::GetComponentType(size_t id) const
+Poly::RTTI::TypeInfo pe::api::ecs::ComponentManager::GetComponentType(size_t id) const
 {
 	const auto& it = IDToTypeMap.find(id);
 	if (it == IDToTypeMap.end())
@@ -25,7 +26,7 @@ Poly::RTTI::TypeInfo Poly::ComponentManager::GetComponentType(size_t id) const
 	return it->second;
 }
 
-Dynarray<std::pair<RTTI::TypeInfo, size_t>> Poly::ComponentManager::GetComponentTypesList() const
+Dynarray<std::pair<RTTI::TypeInfo, size_t>> pe::api::ecs::ComponentManager::GetComponentTypesList() const
 {
 	Dynarray<std::pair<RTTI::TypeInfo, size_t>> ret;
 	ret.Reserve(TypeToIDMap.size());
@@ -36,7 +37,7 @@ Dynarray<std::pair<RTTI::TypeInfo, size_t>> Poly::ComponentManager::GetComponent
 	return ret;
 }
 
-IterablePoolAllocatorBase* Poly::ComponentManager::CreateAllocator(size_t id, size_t componentCount) const
+IterablePoolAllocatorBase* pe::api::ecs::ComponentManager::CreateAllocator(size_t id, size_t componentCount) const
 {
 	const auto& it = IDToCreatorMap.find(id);
 	if (it == IDToCreatorMap.end())
@@ -44,14 +45,14 @@ IterablePoolAllocatorBase* Poly::ComponentManager::CreateAllocator(size_t id, si
 	return it->second(componentCount);
 }
 
-void Poly::ComponentManager::Clear()
+void pe::api::ecs::ComponentManager::Clear()
 {
 	TypeToIDMap.clear();
 	IDToTypeMap.clear();
 	IDToCreatorMap.clear();
 }
 
-size_t Poly::Impl::ComponentIDGenerator::GenerateID() noexcept
+size_t pe::api::ecs::Impl::ComponentIDGenerator::GenerateID() noexcept
 {
 	static size_t value = 0;
 	return value++;

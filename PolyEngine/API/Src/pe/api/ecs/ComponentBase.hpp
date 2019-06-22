@@ -2,11 +2,11 @@
 
 #include <Defines.hpp>
 #include <Utils/Optional.hpp>
-#include <ECS/Entity.hpp>
-#include <ECS/ComponentIDGenerator.hpp>
-#include <ECS/ComponentIDGeneratorImpl.hpp>
+#include <pe/api/ecs/Entity.hpp>
+#include <pe/api/ecs/ComponentIDGenerator.hpp>
+#include <pe/api/ecs/ComponentIDGeneratorImpl.hpp>
 
-namespace Poly {
+namespace pe::api::ecs {
 	enum class eComponentBaseFlags
 	{
 		NONE = 0x00,
@@ -17,7 +17,7 @@ namespace Poly {
 	/// <summary>Base type for every component type</summary>
 	class ENGINE_DLLEXPORT ComponentBase : public RTTIBase
 	{
-		RTTI_DECLARE_TYPE_DERIVED(::Poly::ComponentBase, ::Poly::RTTIBase) 
+		RTTI_DECLARE_TYPE_DERIVED(::pe::api::ecs::ComponentBase, ::Poly::RTTIBase) 
 		{ 
 			RTTI_PROPERTY_AUTONAME(Owner, RTTI::ePropertyFlag::NONE);
 		}

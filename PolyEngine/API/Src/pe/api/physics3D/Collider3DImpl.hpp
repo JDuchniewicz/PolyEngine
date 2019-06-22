@@ -4,10 +4,10 @@
 
 class btCollisionObject;
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	struct Trigger3DImpl : BaseObject<>
 	{
 		btCollisionObject* BulletTrigger = nullptr;
 	};
-} // namespace Poly
+} // namespace pe::api::physics3D

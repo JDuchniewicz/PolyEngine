@@ -1,18 +1,18 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Particles/ParticleComponent.hpp>
-#include <Rendering/Camera/CameraComponent.hpp>
+#include <pe/api/rendering/particles/ParticleComponent.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering::particles;
 
-RTTI_DEFINE_COMPONENT(::Poly::ParticleComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::particles::ParticleComponent)
 
 ParticleComponent::ParticleComponent(const ParticleEmitter::Settings& emitter)
 {
 	Emitter = new ParticleEmitter(emitter);
 }
 
-Poly::ParticleComponent::~ParticleComponent()
+pe::api::rendering::particles::ParticleComponent::~ParticleComponent()
 {
 	delete Emitter;
 }

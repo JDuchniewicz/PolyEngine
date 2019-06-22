@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <Input/InputSystem.hpp>
-#include <Input/InputWorldComponent.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/input/InputSystem.hpp>
+#include <pe/api/input/InputWorldComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
 #include <Utils/Optional.hpp>
 
-using namespace Poly;
+using namespace pe::api::input;
 
 void InputSystem::InputPhase(Scene* world)
 {

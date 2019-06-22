@@ -1,9 +1,9 @@
 ﻿#include <EnginePCH.hpp>
 
-#include <Resources/FontResource.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/resources/FontResource.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::resources;
 
 static FT_Library gFreeTypeLibrary = nullptr;
 
@@ -42,7 +42,7 @@ const FontResource::FontFace& FontResource::GetFace(size_t height) const
 	return it->second;
 }
 
-void Poly::FontResource::LoadFace(size_t height) const
+void pe::api::resources::FontResource::LoadFace(size_t height) const
 {
 	if (Faces.find(height) != Faces.end())
 		return; // Already loaded

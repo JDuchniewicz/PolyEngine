@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Input/InputWorldComponent.hpp>
+#include <pe/api/input/InputWorldComponent.hpp>
 
-RTTI_DEFINE_COMPONENT(::Poly::InputWorldComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::input::InputWorldComponent)
 
-bool Poly::InputWorldComponent::IsPressed(const std::initializer_list<eKey>& list) const
+bool pe::api::input::InputWorldComponent::IsPressed(const std::initializer_list<eKey>& list) const
 {
 	bool result = true;
 	for (const eKey& i : list)
@@ -12,7 +12,7 @@ bool Poly::InputWorldComponent::IsPressed(const std::initializer_list<eKey>& lis
 	return result;
 }
 
-bool Poly::InputWorldComponent::IsPressed(const std::initializer_list<eMouseButton >& list) const
+bool pe::api::input::InputWorldComponent::IsPressed(const std::initializer_list<eMouseButton >& list) const
 {
 	bool result = true;
 	for (const eMouseButton& i : list)
@@ -20,14 +20,14 @@ bool Poly::InputWorldComponent::IsPressed(const std::initializer_list<eMouseButt
 	return result;
 }
 
-bool Poly::InputWorldComponent::IsPressed(size_t playerID, eControllerButton button) const
+bool pe::api::input::InputWorldComponent::IsPressed(size_t playerID, eControllerButton button) const
 {
 	ASSERTE(IsControllerConnected(playerID), "Controller not connected!");
 	size_t joystickID = PlayerIDToJoystickID[playerID].Value();
 	return Controllers.at(joystickID).CurrButton[button];
 }
 
-bool Poly::InputWorldComponent::IsClicked(size_t playerID, eControllerButton button) const
+bool pe::api::input::InputWorldComponent::IsClicked(size_t playerID, eControllerButton button) const
 {
 	ASSERTE(IsControllerConnected(playerID), "Controller not connected!");
 	size_t joystickID = PlayerIDToJoystickID[playerID].Value();
@@ -35,7 +35,7 @@ bool Poly::InputWorldComponent::IsClicked(size_t playerID, eControllerButton but
 	return controller.CurrButton[button] && !controller.PrevButton[button];
 }
 
-bool Poly::InputWorldComponent::IsReleased(size_t playerID, eControllerButton button) const
+bool pe::api::input::InputWorldComponent::IsReleased(size_t playerID, eControllerButton button) const
 {
 	ASSERTE(IsControllerConnected(playerID), "Controller not connected!");
 	size_t joystickID = PlayerIDToJoystickID[playerID].Value();
@@ -43,14 +43,14 @@ bool Poly::InputWorldComponent::IsReleased(size_t playerID, eControllerButton bu
 	return !controller.CurrButton[button] && controller.PrevButton[button];
 }
 
-float Poly::InputWorldComponent::GetControllerAxis(size_t playerID, eControllerAxis axis) const
+float pe::api::input::InputWorldComponent::GetControllerAxis(size_t playerID, eControllerAxis axis) const
 {
 	ASSERTE(IsControllerConnected(playerID), "Controller not connected!");
 	size_t joystickID = PlayerIDToJoystickID[playerID].Value();
 	return Controllers.at(joystickID).CurrAxis[axis];
 }
 
-float Poly::InputWorldComponent::GetControllerAxisDelta(size_t playerID, eControllerAxis axis) const
+float pe::api::input::InputWorldComponent::GetControllerAxisDelta(size_t playerID, eControllerAxis axis) const
 {
 	ASSERTE(IsControllerConnected(playerID), "Controller not connected!");
 	size_t joystickID = PlayerIDToJoystickID[playerID].Value();
@@ -58,7 +58,7 @@ float Poly::InputWorldComponent::GetControllerAxisDelta(size_t playerID, eContro
 	return controller.CurrAxis[axis] && !controller.PrevAxis[axis];
 }
 
-Poly::Dynarray<size_t> Poly::InputWorldComponent::GetConnectedControllersIDs() const
+Poly::Dynarray<size_t> pe::api::input::InputWorldComponent::GetConnectedControllersIDs() const
 {
 	size_t arraySize = GetConnectedControllersCount();
 	Poly::Dynarray<size_t> controllersIDs(arraySize);
@@ -72,7 +72,7 @@ Poly::Dynarray<size_t> Poly::InputWorldComponent::GetConnectedControllersIDs() c
 	return controllersIDs;
 }
 
-bool Poly::InputWorldComponent::IsControllerConnected(size_t idx) const
+bool pe::api::input::InputWorldComponent::IsControllerConnected(size_t idx) const
 {
 	return PlayerIDToJoystickID.GetSize() > idx && PlayerIDToJoystickID[idx].HasValue();
 }

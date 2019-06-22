@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <ECS/Scene.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::ecs;
 
-RTTI_DEFINE_TYPE(::Poly::Scene);
+RTTI_DEFINE_TYPE(::pe::api::ecs::Scene);
 
 //------------------------------------------------------------------------------
 Scene::Scene()
@@ -28,13 +28,13 @@ Scene::~Scene()
 }
 
 //------------------------------------------------------------------------------
-void Poly::Scene::BeforeDeserializationCallback()
+void pe::api::ecs::Scene::BeforeDeserializationCallback()
 {
 	gEngine->SetCurrentlySerializedScene(this);
 }
 
 //------------------------------------------------------------------------------
-void Poly::Scene::AfterDeserializationCallback()
+void pe::api::ecs::Scene::AfterDeserializationCallback()
 {
 	gEngine->SetCurrentlySerializedScene(nullptr);
 }
@@ -48,7 +48,7 @@ Entity* Scene::SpawnEntity()
 }
 
 //------------------------------------------------------------------------------
-Entity * Poly::Scene::SpawnEntityInternal()
+Entity * pe::api::ecs::Scene::SpawnEntityInternal()
 {
 	Entity* ent = EntitiesAllocator.Alloc();
 	::new(ent) Entity(this);

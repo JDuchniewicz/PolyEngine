@@ -2,9 +2,9 @@
 
 #include <Defines.hpp>
 
-using namespace Poly;
+using namespace pe::api::physics2D;
 
-namespace Poly {
+namespace pe::api::physics2D {
 	struct RigidBody2DData
 	{
 		b2BodyDef BodyDef;

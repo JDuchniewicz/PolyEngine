@@ -1,16 +1,16 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
 
-namespace Poly
+namespace pe::api::rendering
 {
 	class TextureResource;
 
 	class ENGINE_DLLEXPORT SkyboxWorldComponent : public ComponentBase
 	{
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::SkyboxWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::SkyboxWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		SkyboxWorldComponent(const String& panoramaPath, const eResourceSource source);
 		SkyboxWorldComponent(const Dynarray<String>& panoramaPaths, const eResourceSource source);

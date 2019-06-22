@@ -5,12 +5,12 @@
 #include <Math/AABox.hpp>
 #include <Utils/EnumUtils.hpp>
 #include <RTTI/RTTI.hpp>
-#include <ECS/EntityTransform.hpp>
-#include <ECS/ComponentIDGenerator.hpp>
 #include <Collections/Dynarray.hpp>
+#include <pe/api/ecs/EntityTransform.hpp>
+#include <pe/api/ecs/ComponentIDGenerator.hpp>
 #include <Engine.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	class ComponentBase;
 	constexpr unsigned int MAX_COMPONENTS_COUNT = 64;
@@ -34,7 +34,7 @@ namespace Poly
 	/// <summary>Class that represent entity inside core engine systems. Should not be used anywhere else.</summary>
 	class ENGINE_DLLEXPORT Entity : public SafePtrRoot
 	{
-		RTTI_DECLARE_TYPE_DERIVED(::Poly::Entity, ::Poly::SafePtrRoot)
+		RTTI_DECLARE_TYPE_DERIVED(::pe::api::ecs::Entity, ::Poly::SafePtrRoot)
 		{
 			RTTI_PROPERTY_AUTONAME(NameTemplate, RTTI::ePropertyFlag::NONE);
 			RTTI_PROPERTY_AUTONAME(Name, RTTI::ePropertyFlag::NONE);
@@ -184,4 +184,4 @@ namespace Poly
 	{
 		return HasComponent(GetComponentID<T>());
 	}
-} //namespace Poly
+} //namespace pe::api::ecs

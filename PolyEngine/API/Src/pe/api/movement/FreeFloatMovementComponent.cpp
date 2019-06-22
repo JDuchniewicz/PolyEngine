@@ -1,12 +1,12 @@
 #include <EnginePCH.hpp>
 
-#include <Movement/FreeFloatMovementComponent.hpp>
+#include <pe/api/movement/FreeFloatMovementComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::movement;
 
-RTTI_DEFINE_COMPONENT(::Poly::FreeFloatMovementComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::movement::FreeFloatMovementComponent)
 
-Poly::FreeFloatMovementComponent::FreeFloatMovementComponent(float movementSpeed, float rotationSpeed, float wheelSensitivity)
+pe::api::movement::FreeFloatMovementComponent::FreeFloatMovementComponent(float movementSpeed, float rotationSpeed, float wheelSensitivity)
 	: MovementSpeed(movementSpeed), RotationSpeed(rotationSpeed), WheelSensitivity(wheelSensitivity)
 {
 }

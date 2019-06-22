@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	class ENGINE_DLLEXPORT DeferredTaskBase : public BaseObject<>
 	{

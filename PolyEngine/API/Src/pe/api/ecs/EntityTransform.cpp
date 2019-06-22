@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <ECS/EntityTransform.hpp>
-#include <ECS/Entity.hpp>
+#include <pe/api/ecs/EntityTransform.hpp>
+#include <pe/api/ecs/Entity.hpp>
 
-using namespace Poly;
+using namespace pe::api::ecs;
 
-RTTI_DEFINE_TYPE(::Poly::EntityTransform);
+RTTI_DEFINE_TYPE(::pe::api::ecs::EntityTransform);
 
 //-----------------------------------------------------------------------------
 EntityTransform::~EntityTransform() {
@@ -51,7 +51,7 @@ void EntityTransform::SetLocalTranslation(const Vector& position)
 }
 
 //------------------------------------------------------------------------------
-void Poly::EntityTransform::SetGlobalTranslation(const Vector& position)
+void pe::api::ecs::EntityTransform::SetGlobalTranslation(const Vector& position)
 {
 	Vector currentGlobal = GetGlobalTranslation();
 	SetLocalTranslation(GetLocalTranslation() + (position - currentGlobal));
@@ -72,7 +72,7 @@ void EntityTransform::SetLocalRotation(const Quaternion& quaternion)
 	SetGlobalDirty();
 }
 
-void Poly::EntityTransform::SetGlobalRotation(const Quaternion& quaternion)
+void pe::api::ecs::EntityTransform::SetGlobalRotation(const Quaternion& quaternion)
 {
 	Quaternion currentGlobal = GetGlobalRotation();
 	SetLocalRotation(GetLocalRotation() * (currentGlobal.Conjugate() * quaternion));
@@ -94,7 +94,7 @@ void EntityTransform::SetLocalScale(const Vector& scale)
 }
 
 //------------------------------------------------------------------------------
-void Poly::EntityTransform::SetGlobalScale(const Vector& scale)
+void pe::api::ecs::EntityTransform::SetGlobalScale(const Vector& scale)
 {
 	Vector currentGlobal = GetGlobalScale();
 	Vector currLocal = GetLocalScale();

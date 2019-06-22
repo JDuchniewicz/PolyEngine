@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Time/TimeSystem.hpp>
+#include <pe/api/time/TimeSystem.hpp>
 
-namespace Poly
+namespace pe::api::time
 {
 
 	class ENGINE_DLLEXPORT Timer : public BaseObject<>

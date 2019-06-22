@@ -1,12 +1,12 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Resources/ResourceBase.hpp>
-#include <Rendering/IRenderingDevice.hpp>
+#include <pe/api/resources/ResourceBase.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
 
 typedef unsigned int GLuint;
 
-namespace Poly 
+namespace pe::api::resources 
 {
 	class ITextureDeviceProxy;
 

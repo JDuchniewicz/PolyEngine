@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Camera/CameraComponent.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering::camera;
 
-RTTI_DEFINE_COMPONENT(::Poly::CameraComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::camera::CameraComponent)
 
 CameraComponent::CameraComponent(Angle fov,  float zNear, float zFar)
 	: IsPerspective(true), Fov(fov), Near(zNear), Far(zFar),
@@ -19,7 +19,7 @@ CameraComponent::CameraComponent(float top, float bottom, float left, float righ
 	ASSERTE(false, "Orthographic projection is not yet implemented");
 }
 
-void Poly::CameraComponent::UpdateProjection()
+void pe::api::rendering::camera::CameraComponent::UpdateProjection()
 {
 	if (IsPerspective)
 	{
@@ -32,7 +32,7 @@ void Poly::CameraComponent::UpdateProjection()
 	}
 }
 
-bool Poly::CameraComponent::IsVisibleToCamera(const Entity* ent) const
+bool pe::api::rendering::camera::CameraComponent::IsVisibleToCamera(const Entity* ent) const
 {
 	if (IsPerspective)
 	{

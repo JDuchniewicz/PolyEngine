@@ -2,7 +2,7 @@
 
 #include <Defines.hpp>
 
-namespace Poly
+namespace pe::api::movement
 {
 	class Scene;
 	class EntityTransform;

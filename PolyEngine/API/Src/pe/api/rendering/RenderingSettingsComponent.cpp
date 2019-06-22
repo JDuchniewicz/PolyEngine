@@ -1,7 +1,7 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/RenderingSettingsComponent.hpp>
+#include <pe/api/rendering/RenderingSettingsComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::RenderingSettingsComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::RenderingSettingsComponent)

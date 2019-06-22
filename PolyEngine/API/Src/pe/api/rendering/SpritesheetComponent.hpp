@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Rendering/RenderingSystem.hpp>
-#include <Configs/ConfigBase.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/rendering/RenderingSystem.hpp>
+#include <pe/api/configs/ConfigBase.hpp>
 
-namespace Poly {
+namespace pe::api::rendering {
 
 	struct ENGINE_DLLEXPORT SpritesheetSettings
 	{
@@ -21,7 +21,7 @@ namespace Poly {
 
 	class ENGINE_DLLEXPORT SpritesheetComponent : public ComponentBase
 	{
-		RTTI_DECLARE_COMPONENT(::Poly::SpritesheetComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::SpritesheetComponent) { NO_RTTI_PROPERTY(); }
 	public:
 		friend void RenderingSystem::RenderingPhase(Scene*);
 	public:

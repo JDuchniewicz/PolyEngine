@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Physics2D/Physics2DSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/physics2D/Physics2DSystem.hpp>
 
-namespace Poly
+namespace pe::api::physics2D
 {
 	class Scene;
 
@@ -24,7 +24,7 @@ namespace Poly
 	{
 		friend void Physics2DSystem::Physics2DUpdatePhase(Scene* world);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::RigidBody2DComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::physics2D::RigidBody2DComponent) { NO_RTTI_PROPERTY(); }
 
 		RigidBody2DComponent(Scene* world, eRigidBody2DType type, float density = 1.0f, float friction = 0.3f);
 		RigidBody2DComponent(Scene* world, eRigidBody2DType type, RigidBody2DSensorTag sensorTag);

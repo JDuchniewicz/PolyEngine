@@ -1,13 +1,13 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Rendering/Particles/ParticleUpdateSystem.hpp>
-#include <Rendering/IRenderingDevice.hpp>
-#include <Rendering/SpritesheetComponent.hpp>
+#include <pe/api/rendering/particles/ParticleUpdateSystem.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
+#include <pe/api/rendering/SpritesheetComponent.hpp>
 
 typedef unsigned int GLuint;
 
-namespace Poly
+namespace pe::api::rendering::particles
 {
 
 	class ParticleComponent;

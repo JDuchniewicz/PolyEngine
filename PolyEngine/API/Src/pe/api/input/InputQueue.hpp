@@ -4,9 +4,9 @@
 #include <Math/Vector2f.hpp>
 #include <Math/Vector2i.hpp>
 #include <Collections/Queue.hpp>
-#include <Input/KeyBindings.hpp>
+#include <pe/api/input/KeyBindings.hpp>
 
-namespace Poly
+namespace pe::api::input
 {
 	enum class eInputEventType
 	{

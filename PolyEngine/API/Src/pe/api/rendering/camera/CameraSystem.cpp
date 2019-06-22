@@ -1,13 +1,13 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Camera/CameraSystem.hpp>
-#include <Rendering/IRenderingDevice.hpp>
-#include <Rendering/ViewportWorldComponent.hpp>
-#include <Rendering/Camera/CameraComponent.hpp>
-#include <ECS/Scene.hpp>
-#include <Input/InputWorldComponent.hpp>
+#include <pe/api/rendering/camera/CameraSystem.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
+#include <pe/api/rendering/ViewportWorldComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
+#include <pe/api/input/InputWorldComponent.hpp>
 
-void Poly::CameraSystem::CameraUpdatePhase(Scene* world)
+void pe::api::rendering::camera::CameraSystem::CameraUpdatePhase(Scene* world)
 {
 	ScreenSize screen = gEngine->GetRenderingDevice()->GetScreenSize();
 	for (auto& kv : world->GetWorldComponent<ViewportWorldComponent>()->GetViewports())

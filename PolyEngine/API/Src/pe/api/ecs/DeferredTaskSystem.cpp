@@ -1,9 +1,10 @@
 #include <EnginePCH.hpp>
-#include <ECS/DeferredTaskSystem.hpp>
-#include <ECS/Entity.hpp>
-#include <ECS/DeferredTaskImplementation.hpp>
 
-using namespace Poly;
+#include <pe/api/ecs/DeferredTaskSystem.hpp>
+#include <pe/api/ecs/Entity.hpp>
+#include <pe/api/ecs/DeferredTaskImplementation.hpp>
+
+using namespace pe::api::ecs;
 
 //------------------------------------------------------------------------------
 Entity* DeferredTaskSystem::SpawnEntityImmediate(Scene* w)

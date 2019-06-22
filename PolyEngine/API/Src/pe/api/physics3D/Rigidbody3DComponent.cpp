@@ -1,26 +1,26 @@
 #include <EnginePCH.hpp>
 
-#include <Physics3D/Rigidbody3DComponent.hpp>
-#include <Physics3D/Rigidbody3DImpl.hpp>
+#include <pe/api/physics3D/Rigidbody3DComponent.hpp>
+#include <pe/api/physics3D/Rigidbody3DImpl.hpp>
 
-RTTI_DEFINE_COMPONENT(::Poly::Rigidbody3DComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::physics3D::Rigidbody3DComponent)
 
 //------------------------------------------------------------------------------
-Poly::Rigidbody3DComponent::Rigidbody3DComponent(Scene* world, const Rigidbody3DComponentTemplate& tmp)
+pe::api::physics3D::Rigidbody3DComponent::Rigidbody3DComponent(Scene* world, const Rigidbody3DComponentTemplate& tmp)
 	: BodyWorld(world)
 {
 	Template = tmp;
 }
 
 //------------------------------------------------------------------------------
-Poly::Rigidbody3DComponent::~Rigidbody3DComponent()
+pe::api::physics3D::Rigidbody3DComponent::~Rigidbody3DComponent()
 {
 	if (Template.Registered)
 		Physics3DSystem::UnregisterComponent(BodyWorld, GetOwner());
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetMassProps(float mass, const Vector& inertia)
+void pe::api::physics3D::Rigidbody3DComponent::SetMassProps(float mass, const Vector& inertia)
 {
 	Template.Mass = mass;
 	Template.Inertia = inertia;
@@ -29,7 +29,7 @@ void Poly::Rigidbody3DComponent::SetMassProps(float mass, const Vector& inertia)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetRestitution(float restitution)
+void pe::api::physics3D::Rigidbody3DComponent::SetRestitution(float restitution)
 {
 	Template.Restitution = restitution;
 
@@ -37,7 +37,7 @@ void Poly::Rigidbody3DComponent::SetRestitution(float restitution)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetFriction(float friction)
+void pe::api::physics3D::Rigidbody3DComponent::SetFriction(float friction)
 {
 	Template.Friction = friction;
 
@@ -45,7 +45,7 @@ void Poly::Rigidbody3DComponent::SetFriction(float friction)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetRollingFriction(float friction)
+void pe::api::physics3D::Rigidbody3DComponent::SetRollingFriction(float friction)
 {
 	Template.RollingFriction = friction;
 
@@ -53,7 +53,7 @@ void Poly::Rigidbody3DComponent::SetRollingFriction(float friction)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetDamping(float linearDamping, float angularDamping)
+void pe::api::physics3D::Rigidbody3DComponent::SetDamping(float linearDamping, float angularDamping)
 {
 	Template.LinearDamping = linearDamping;
 	Template.AngularDamping = angularDamping;
@@ -62,7 +62,7 @@ void Poly::Rigidbody3DComponent::SetDamping(float linearDamping, float angularDa
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetLinearFactor(const Vector& linearFactor)
+void pe::api::physics3D::Rigidbody3DComponent::SetLinearFactor(const Vector& linearFactor)
 {
 	Template.LinearFactor = linearFactor;
 
@@ -70,7 +70,7 @@ void Poly::Rigidbody3DComponent::SetLinearFactor(const Vector& linearFactor)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetAngularFactor(const Vector& angularFactor)
+void pe::api::physics3D::Rigidbody3DComponent::SetAngularFactor(const Vector& angularFactor)
 {
 	Template.AngularFactor = angularFactor;
 
@@ -78,7 +78,7 @@ void Poly::Rigidbody3DComponent::SetAngularFactor(const Vector& angularFactor)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetLinearVelocity(const Vector& velocity)
+void pe::api::physics3D::Rigidbody3DComponent::SetLinearVelocity(const Vector& velocity)
 {
 	Template.LinearVelocity = velocity;
 
@@ -86,7 +86,7 @@ void Poly::Rigidbody3DComponent::SetLinearVelocity(const Vector& velocity)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetAngularVelocity(const Vector& velocity)
+void pe::api::physics3D::Rigidbody3DComponent::SetAngularVelocity(const Vector& velocity)
 {
 	Template.AngularVelocity = velocity;
 
@@ -94,21 +94,21 @@ void Poly::Rigidbody3DComponent::SetAngularVelocity(const Vector& velocity)
 }
 
 //------------------------------------------------------------------------------
-Poly::Vector Poly::Rigidbody3DComponent::GetLinearVelocity()
+Poly::Vector pe::api::physics3D::Rigidbody3DComponent::GetLinearVelocity()
 {
 	const btVector3& v = ImplData->BulletRigidBody->getLinearVelocity();
 	return Vector(v.x(), v.y(), v.z());
 }
 
 //------------------------------------------------------------------------------
-Poly::Vector Poly::Rigidbody3DComponent::GetAngularVelocity()
+Poly::Vector pe::api::physics3D::Rigidbody3DComponent::GetAngularVelocity()
 {
 	const btVector3& v = ImplData->BulletRigidBody->getAngularVelocity();
 	return Vector(v.x(), v.y(), v.z());
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::UpdatePosition()
+void pe::api::physics3D::Rigidbody3DComponent::UpdatePosition()
 {
 	const EntityTransform& transform = GetTransform();
 
@@ -127,7 +127,7 @@ void Poly::Rigidbody3DComponent::UpdatePosition()
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::ApplyImpulseToCenter(const Vector& impulse)
+void pe::api::physics3D::Rigidbody3DComponent::ApplyImpulseToCenter(const Vector& impulse)
 {
 	ImpulseToCenter = impulse;
 
@@ -135,7 +135,7 @@ void Poly::Rigidbody3DComponent::ApplyImpulseToCenter(const Vector& impulse)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::ApplyImpulse(const Vector& impulse, const Vector& relPos)
+void pe::api::physics3D::Rigidbody3DComponent::ApplyImpulse(const Vector& impulse, const Vector& relPos)
 {
 	Impulse = impulse;
 	ImpulsePos = relPos;
@@ -144,7 +144,7 @@ void Poly::Rigidbody3DComponent::ApplyImpulse(const Vector& impulse, const Vecto
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::ApplyTorqueImpulse(const Vector& torque)
+void pe::api::physics3D::Rigidbody3DComponent::ApplyTorqueImpulse(const Vector& torque)
 {
 	TorqueImpulse = torque;
 
@@ -152,7 +152,7 @@ void Poly::Rigidbody3DComponent::ApplyTorqueImpulse(const Vector& torque)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Rigidbody3DComponent::SetGravity(const Vector& gravity)
+void pe::api::physics3D::Rigidbody3DComponent::SetGravity(const Vector& gravity)
 {
 	Template.Gravity = gravity;
 
@@ -160,7 +160,7 @@ void Poly::Rigidbody3DComponent::SetGravity(const Vector& gravity)
 }
 
 //------------------------------------------------------------------------------
-Poly::Vector Poly::Rigidbody3DComponent::GetGravity() const
+Poly::Vector pe::api::physics3D::Rigidbody3DComponent::GetGravity() const
 {
 	const btVector3& g = ImplData->BulletRigidBody->getGravity();
 	return Vector(g.x(), g.y(), g.z());

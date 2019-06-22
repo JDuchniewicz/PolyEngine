@@ -2,7 +2,7 @@
 
 #include <Defines.hpp>
 
-namespace Poly
+namespace pe::api::time
 {
 	class Scene;
 	enum class eEngineTimer { SYSTEM, GAMEPLAY, _COUNT };

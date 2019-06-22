@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Rendering/Camera/CameraSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/rendering/camera/CameraSystem.hpp>
 #include <Math/Frustum.hpp>
 
-namespace Poly {
+namespace pe::api::rendering::camera {
 
 	enum class eRenderingModeType
 	{
@@ -22,7 +22,7 @@ namespace Poly {
 	{
 		friend void CameraSystem::CameraUpdatePhase(Scene*);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::CameraComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::camera::CameraComponent) { NO_RTTI_PROPERTY(); }
 
 		CameraComponent(Angle fov, float zNear, float zFar);
 		CameraComponent(float top, float bottom, float left, float right, float zNear, float zFar);

@@ -5,7 +5,7 @@
 class btCollisionShape;
 class btTriangleMesh;
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	struct Physics3DShapeImpl : BaseObject<>
 	{

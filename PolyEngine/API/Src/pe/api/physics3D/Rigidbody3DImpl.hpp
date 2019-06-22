@@ -5,11 +5,11 @@
 struct btDefaultMotionState;
 class btRigidBody;
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	struct Rigidbody3DImpl : BaseObject<>
 	{
 		btDefaultMotionState* BulletMotionState = nullptr;
 		btRigidBody* BulletRigidBody = nullptr;
 	};
-} // namespace Poly
+} // namespace pe::api::physics3D

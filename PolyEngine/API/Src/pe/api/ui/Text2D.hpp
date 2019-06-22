@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Rendering/IRenderingDevice.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
 
 typedef unsigned GLuint;
 
-namespace Poly
+namespace pe::api::ui
 {
 	class FontResource;
 	enum class eResourceSource;

@@ -1,13 +1,13 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Physics2D/Physics2DSystem.hpp>
-#include <Physics2D/Rigidbody2DComponent.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/physics2D/Physics2DSystem.hpp>
+#include <pe/api/physics2D/Rigidbody2DComponent.hpp>
 
 class b2World;
 
-namespace Poly
+namespace pe::api::physics2D
 {
 	struct ENGINE_DLLEXPORT Physics2DConfig
 	{
@@ -26,7 +26,7 @@ namespace Poly
 		friend class Physics2DContactListener;
 		friend class RigidBody2DComponent;
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::Physics2DWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::physics2D::Physics2DWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		struct Collision
 		{

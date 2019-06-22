@@ -1,12 +1,12 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Camera/CameraComponent.hpp>
-#include <Rendering/MeshRenderingComponent.hpp>
-#include <Resources/ResourceManager.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
+#include <pe/api/rendering/MeshRenderingComponent.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::MeshRenderingComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::MeshRenderingComponent)
 
 MeshRenderingComponent::MeshRenderingComponent(const String& meshPath, eResourceSource source)
 {
@@ -23,13 +23,13 @@ MeshRenderingComponent::MeshRenderingComponent(const String& meshPath, eResource
 	}
 }
 
-Poly::MeshRenderingComponent::~MeshRenderingComponent()
+pe::api::rendering::MeshRenderingComponent::~MeshRenderingComponent()
 {
 	if (Mesh)
 		ResourceManager<MeshResource>::Release(Mesh);
 }
 
-Optional<AABox> Poly::MeshRenderingComponent::GetBoundingBox(eEntityBoundingChannel channel) const
+Optional<AABox> pe::api::rendering::MeshRenderingComponent::GetBoundingBox(eEntityBoundingChannel channel) const
 {
 	if (channel != eEntityBoundingChannel::RENDERING || !Mesh)
 		return {};

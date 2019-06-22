@@ -2,15 +2,15 @@
 
 #include <Defines.hpp>
 #include <Math/Vector.hpp>
-#include <Resources/ResourceBase.hpp>
-#include <Resources/TextureResource.hpp>
+#include <pe/api/resources/ResourceBase.hpp>
+#include <pe/api/resources/TextureResource.hpp>
 
 struct FT_FaceRec_;
 typedef struct FT_FaceRec_* FT_Face;
 
 typedef unsigned int GLuint;
 
-namespace Poly
+namespace pe::api::resources
 {
 	class ENGINE_DLLEXPORT FontResource : public ResourceBase
 	{

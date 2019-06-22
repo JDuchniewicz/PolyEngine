@@ -1,12 +1,12 @@
 #include <EnginePCH.hpp>
 
-#include <Resources/MeshResource.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/resources/MeshResource.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::resources;
 
-RTTI_DEFINE_TYPE(Poly::MeshResource)
+RTTI_DEFINE_TYPE(pe::api::resources::MeshResource)
 
 MeshResource::MeshResource(const String& path)
 {
@@ -188,7 +188,7 @@ TextureResource* MeshResource::SubMesh::LoadTexture(const aiMaterial* material, 
 	return texture;
 }
 
-Poly::MeshResource::Animation::Animation(aiAnimation * anim)
+pe::api::resources::MeshResource::Animation::Animation(aiAnimation * anim)
 {
 	Duration = (float)anim->mDuration;
 	TicksPerSecond = (float)anim->mTicksPerSecond;

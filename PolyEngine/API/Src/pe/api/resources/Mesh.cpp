@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Resources/Mesh.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/TextureResource.hpp>
+#include <pe/api/resources/Mesh.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/resources/TextureResource.hpp>
 
-Poly::Mesh::~Mesh()
+pe::api::resources::Mesh::~Mesh()
 {
 	if (AlbedoMap)
 		ResourceManager<TextureResource>::Release(AlbedoMap);

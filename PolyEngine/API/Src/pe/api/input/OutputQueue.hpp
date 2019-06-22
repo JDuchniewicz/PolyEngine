@@ -4,7 +4,7 @@
 #include <Math/Vector2i.hpp>
 #include <Collections/Queue.hpp>
 
-namespace Poly
+namespace pe::api::input
 {
 	enum class eOutputEventType
 	{

@@ -1,9 +1,9 @@
 #include <EnginePCH.hpp>
 
-#include <Resources/TextureResource.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Rendering/IRenderingDevice.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/resources/TextureResource.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
 using namespace Poly;
 

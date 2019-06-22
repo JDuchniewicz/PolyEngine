@@ -10,7 +10,7 @@
 #    define EXPORT_TEMPLATE extern
 #endif
 
-namespace Poly
+namespace pe::api::ecs
 {
 
 	namespace Impl
@@ -83,7 +83,7 @@ namespace Poly
 		template<typename T>
 		void RegisterComponent()
 		{
-			size_t id = ::Poly::GetComponentID<T>();
+			size_t id = ::pe::api::ecs::GetComponentID<T>();
 			RTTI::TypeInfo typeinfo = RTTI::TypeInfo::Get<T>();
 			TypeToIDMap.insert({ typeinfo, id });
 			IDToTypeMap.insert({ id, typeinfo});
@@ -121,11 +121,11 @@ struct AutoRegisterComponent {
 
 #define RTTI_DECLARE_COMPONENT(TYPE) \
 	public: \
-	size_t GetComponentID() const override { return ::Poly::GetComponentID<TYPE>(); }	\
-	RTTI_DECLARE_TYPE_DERIVED(TYPE, ::Poly::ComponentBase)
+	size_t GetComponentID() const override { return ::pe::api::ecs::GetComponentID<TYPE>(); }	\
+	RTTI_DECLARE_TYPE_DERIVED(TYPE, ::pe::api::ecs::ComponentBase)
 
 #define RTTI_DEFINE_COMPONENT(TYPE) \
 	template <> struct AutoRegisterComponent<TYPE> { AutoRegisterComponent() \
-	{ ::Poly::ComponentManager::Get().RegisterComponent<TYPE>(); } }; \
+	{ ::pe::api::ecs::ComponentManager::Get().RegisterComponent<TYPE>(); } }; \
 	static const AutoRegisterComponent<TYPE> RTTI_CAT(autoRegisterComponent, __COUNTER__); \
 	RTTI_DEFINE_TYPE(TYPE)

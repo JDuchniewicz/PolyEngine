@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <UI/Text2D.hpp>
-#include <Resources/FontResource.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/ui/Text2D.hpp>
+#include <pe/api/resources/FontResource.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::ui;
 
 Text2D::~Text2D()
 {
@@ -73,7 +73,7 @@ void Text2D::UpdateDeviceBuffers() const
 		TextFieldBufferProxy->SetContent(letters.GetSize(), letters.GetData());
 }
 
-const ITextureDeviceProxy* Poly::Text2D::GetFontTextureProxy() const
+const ITextureDeviceProxy* pe::api::ui::Text2D::GetFontTextureProxy() const
 {
 	return Font->GetFace(FontSize).TextureProxy.get();
 }

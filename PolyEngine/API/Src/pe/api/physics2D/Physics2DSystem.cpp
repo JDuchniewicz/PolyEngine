@@ -1,14 +1,14 @@
 #include <EnginePCH.hpp>
 
-#include <Physics2D/Physics2DSystem.hpp>
-#include <Physics2D/Physics2DWorldComponent.hpp>
-#include <Time/TimeSystem.hpp>
-#include <Physics2D/RigidBody2DImpl.hpp>
-#include <Physics2D/Rigidbody2DComponent.hpp>
+#include <pe/api/physics2D/Physics2DSystem.hpp>
+#include <pe/api/physics2D/Physics2DWorldComponent.hpp>
+#include <pe/api/time/TimeSystem.hpp>
+#include <pe/api/physics2D/RigidBody2DImpl.hpp>
+#include <pe/api/physics2D/Rigidbody2DComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::physics2D;
 
-void Poly::Physics2DSystem::Physics2DUpdatePhase(Scene* world)
+void pe::api::physics2D::Physics2DSystem::Physics2DUpdatePhase(Scene* world)
 {
 	float deltaTime = (float)TimeSystem::GetTimerDeltaTime(world, eEngineTimer::GAMEPLAY);
 	Physics2DWorldComponent* physicsCmp = world->GetWorldComponent<Physics2DWorldComponent>();

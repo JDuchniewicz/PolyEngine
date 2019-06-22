@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Physics3D/Physics3DSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/physics3D/Physics3DSystem.hpp>
 
 	// FIXME(squares): this shouldn't be declared here
 class btDiscreteDynamicsWorld;
@@ -12,7 +12,7 @@ class btBroadphaseInterface;
 class btSequentialImpulseConstraintSolver;
 class btCollisionObject;
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	/// Config for physics simulation
 	/// @see Physics3DWorldComponent
@@ -41,7 +41,7 @@ namespace Poly
 		friend RaycastResult Physics3DSystem::AllHitsRaycast(Scene* world, const Vector& from, const Vector& to, EnumFlags<eCollisionGroup> collisionGroup, EnumFlags<eCollisionGroup> collidesWith);
 		friend RaycastResult Physics3DSystem::ClosestHitRaycast(Scene* world, const Vector& from, const Vector& to, EnumFlags<eCollisionGroup> collisionGroup, EnumFlags<eCollisionGroup> collidesWith);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::Physics3DWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::physics3D::Physics3DWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		Physics3DWorldComponent(Physics3DConfig config);
 		~Physics3DWorldComponent();
@@ -67,4 +67,4 @@ namespace Poly
 	};
 
 	REGISTER_COMPONENT(ComponentsIDGroup, Physics3DWorldComponent)
-} // namespace Poly
+} // namespace pe::api::physics3D

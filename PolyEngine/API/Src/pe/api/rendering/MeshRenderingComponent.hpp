@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Rendering/RenderingSystem.hpp>
-#include <Resources/MeshResource.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/rendering/RenderingSystem.hpp>
+#include <pe/api/resources/MeshResource.hpp>
 
-namespace Poly {
+namespace pe::api::rendering {
 
 	enum class eShadingMode
 	{
@@ -43,7 +43,7 @@ namespace Poly {
 	class ENGINE_DLLEXPORT MeshRenderingComponent : public ComponentBase
 	{
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::MeshRenderingComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::rendering::MeshRenderingComponent) { NO_RTTI_PROPERTY(); }
 
 		MeshRenderingComponent(const String& meshPath, eResourceSource source);
 		virtual ~MeshRenderingComponent();

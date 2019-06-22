@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <ECS/DeferredTaskBase.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/ecs/DeferredTaskBase.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	namespace DeferredTaskSystem
 	{
@@ -17,7 +17,7 @@ namespace Poly
 		friend void DeferredTaskSystem::DeferredTaskPhase(Scene*);
 		template<typename T, typename ...Args> friend T* DeferredTaskSystem::AddComponentImmediate(Scene* w, Entity* entity, Args && ...args);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::DeferredTaskWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::ecs::DeferredTaskWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		DeferredTaskWorldComponent() = default;
 

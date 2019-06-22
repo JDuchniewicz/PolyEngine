@@ -1,5 +1,5 @@
 #include <EnginePCH.hpp>
 
-#include <ECS/DeferredTaskWorldComponent.hpp>
+#include <pe/api/ecs/DeferredTaskWorldComponent.hpp>
 
-RTTI_DEFINE_COMPONENT(::Poly::DeferredTaskWorldComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::ecs::DeferredTaskWorldComponent)

@@ -1,14 +1,14 @@
 #include <EnginePCH.hpp>
 
-#include <Physics3D/Collider3DImpl.hpp>
-#include <Physics3D/Physics3DShapes.hpp>
-#include <Physics3D/Physics3DShapesImpl.hpp>
-#include <Physics3D/Rigidbody3DComponent.hpp>
+#include <pe/api/physics3D/Collider3DImpl.hpp>
+#include <pe/api/physics3D/Physics3DShapes.hpp>
+#include <pe/api/physics3D/Physics3DShapesImpl.hpp>
+#include <pe/api/physics3D/Rigidbody3DComponent.hpp>
 
-RTTI_DEFINE_COMPONENT(Poly::Collider3DComponent)
+RTTI_DEFINE_COMPONENT(pe::api::physics3D::Collider3DComponent)
 
 //------------------------------------------------------------------------------
-Poly::Collider3DComponent::Collider3DComponent(Scene* world, Collider3DComponentTemplate&& tmp)
+pe::api::physics3D::Collider3DComponent::Collider3DComponent(Scene* world, Collider3DComponentTemplate&& tmp)
 	: BodyWorld(world)
 {
 	Template.Shape = std::move(tmp.Shape);
@@ -18,7 +18,7 @@ Poly::Collider3DComponent::Collider3DComponent(Scene* world, Collider3DComponent
 }
 
 //------------------------------------------------------------------------------
-Poly::Collider3DComponent::~Collider3DComponent()
+pe::api::physics3D::Collider3DComponent::~Collider3DComponent()
 {
 	Rigidbody3DComponent* rigidbody = GetSibling<Rigidbody3DComponent>();
 
@@ -33,7 +33,7 @@ Poly::Collider3DComponent::~Collider3DComponent()
 }
 
 //------------------------------------------------------------------------------
-void Poly::Collider3DComponent::SetShape(const Physics3DShape* shape)
+void pe::api::physics3D::Collider3DComponent::SetShape(const Physics3DShape* shape)
 {
 	Template.Shape.release();
 	Template.Shape = std::make_unique<Physics3DShape>(*shape);
@@ -41,7 +41,7 @@ void Poly::Collider3DComponent::SetShape(const Physics3DShape* shape)
 }
 
 //------------------------------------------------------------------------------
-void Poly::Collider3DComponent::UpdatePosition()
+void pe::api::physics3D::Collider3DComponent::UpdatePosition()
 {
 	const EntityTransform& transform = GetTransform();
 

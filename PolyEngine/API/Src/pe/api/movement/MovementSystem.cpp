@@ -1,19 +1,19 @@
 #include <EnginePCH.hpp>
 
-#include <Movement/MovementSystem.hpp>
-#include <Movement/FreeFloatMovementComponent.hpp>
-#include <ECS/EntityTransform.hpp>
-#include <ECS/Scene.hpp>
-#include <Time/TimeSystem.hpp>
-#include <Input/InputSystem.hpp>
-#include <Input/InputWorldComponent.hpp>
+#include <pe/api/movement/MovementSystem.hpp>
+#include <pe/api/movement/FreeFloatMovementComponent.hpp>
+#include <pe/api/ecs/EntityTransform.hpp>
+#include <pe/api/ecs/Scene.hpp>
+#include <pe/api/time/TimeSystem.hpp>
+#include <pe/api/input/InputSystem.hpp>
+#include <pe/api/input/InputWorldComponent.hpp>
 
 
-using namespace Poly;
+using namespace pe::api::movement;
 
 void MovementSystem::MovementUpdatePhase(Scene* world)
 {
-	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(world, Poly::eEngineTimer::GAMEPLAY));
+	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(world, pe::api::time::eEngineTimer::GAMEPLAY));
 	InputWorldComponent* inputCmp = world->GetWorldComponent<InputWorldComponent>();
 	
 	if (inputCmp->GetIsConsumed())

@@ -1,8 +1,8 @@
 #include <EnginePCH.hpp>
 
-#include <Resources/SoundResource.hpp>
+#include <pe/api/resources/SoundResource.hpp>
 
-using namespace Poly;
+using namespace pe::api::resources;
 
 SoundResource::SoundResource(const String& path)
 {

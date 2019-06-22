@@ -1,12 +1,12 @@
 #include <EnginePCH.hpp>
 
-#include <Physics2D/Physics2DWorldComponent.hpp>
+#include <pe/api/physics2D/Physics2DWorldComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::physics2D;
 
-RTTI_DEFINE_COMPONENT(::Poly::Physics2DWorldComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::physics2D::Physics2DWorldComponent)
 
-namespace Poly {
+namespace pe::api::physics2D {
 	class Physics2DContactListener : public b2ContactListener
 	{
 	public:
@@ -55,11 +55,11 @@ Physics2DWorldComponent::Physics2DWorldComponent(const Physics2DConfig& config)
 	Scene->SetContactListener(ContactListener.get());
 }
 
-Poly::Physics2DWorldComponent::~Physics2DWorldComponent()
+pe::api::physics2D::Physics2DWorldComponent::~Physics2DWorldComponent()
 {
 }
 
-const Dynarray<Physics2DWorldComponent::Collision>& Poly::Physics2DWorldComponent::GetCollidingBodies(RigidBody2DComponent* rb) const
+const Dynarray<Physics2DWorldComponent::Collision>& pe::api::physics2D::Physics2DWorldComponent::GetCollidingBodies(RigidBody2DComponent* rb) const
 {
 	static Dynarray<Physics2DWorldComponent::Collision> EMPTY;
 	auto it = OverlapingBodies.find(rb);
@@ -68,7 +68,7 @@ const Dynarray<Physics2DWorldComponent::Collision>& Poly::Physics2DWorldComponen
 	return it->second;
 }
 
-void Poly::Physics2DWorldComponent::SetGravity(const Vector& gravity) const
+void pe::api::physics2D::Physics2DWorldComponent::SetGravity(const Vector& gravity) const
 {
 	Scene->SetGravity(b2Vec2(gravity.X, gravity.Y));
 }

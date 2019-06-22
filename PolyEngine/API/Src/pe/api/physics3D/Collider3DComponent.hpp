@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Physics3D/Physics3DSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/physics3D/Physics3DSystem.hpp>
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	//------------------------------------------------------------------------------
 	// helper structures
@@ -52,7 +52,7 @@ namespace Poly
 		friend void Physics3DSystem::UnregisterComponent(Scene * world, Entity* entity);
 
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::Collider3DComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::physics3D::Collider3DComponent) { NO_RTTI_PROPERTY(); }
 
 		// constructors and destructor
 
@@ -132,4 +132,4 @@ namespace Poly
 	};
 
 	REGISTER_COMPONENT(ComponentsIDGroup, Collider3DComponent)
-} // namespace Poly
+} // namespace pe::api::physics3D

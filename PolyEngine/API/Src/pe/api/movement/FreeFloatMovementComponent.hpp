@@ -1,16 +1,16 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Movement/MovementSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/movement/MovementSystem.hpp>
 
-namespace Poly {
+namespace pe::api::movement {
 
 	class ENGINE_DLLEXPORT FreeFloatMovementComponent : public ComponentBase
 	{
 		friend void MovementSystem::MovementUpdatePhase(Scene*);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::FreeFloatMovementComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::movement::FreeFloatMovementComponent) { NO_RTTI_PROPERTY(); }
 
 		FreeFloatMovementComponent(float movementSpeed = 1.0f, float rotationSpeed = 1.0f, float wheelSensitivity = 1.0f);
 

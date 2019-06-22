@@ -1,5 +1,5 @@
 #include <EnginePCH.hpp>
 
-#include <UI/ScreenSpaceTextComponent.hpp>
+#include <pe/api/ui/ScreenSpaceTextComponent.hpp>
 
-RTTI_DEFINE_COMPONENT(::Poly::ScreenSpaceTextComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::ui::ScreenSpaceTextComponent)

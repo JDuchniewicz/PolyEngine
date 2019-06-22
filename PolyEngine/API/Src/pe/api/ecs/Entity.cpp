@@ -1,15 +1,15 @@
 #include <EnginePCH.hpp>
 
-#include <ECS/Entity.hpp>
-#include <ECS/EntityTransform.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/ecs/Entity.hpp>
+#include <pe/api/ecs/EntityTransform.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::ecs;
 
-RTTI_DEFINE_TYPE(::Poly::Entity);
+RTTI_DEFINE_TYPE(::pe::api::ecs::Entity);
 
 //------------------------------------------------------------------------------
-void Poly::EntityDeleter::operator()(Entity* e)
+void pe::api::ecs::EntityDeleter::operator()(Entity* e)
 {
 	Scene* scene = e->GetEntityScene();
 	e->~Entity();
@@ -17,7 +17,7 @@ void Poly::EntityDeleter::operator()(Entity* e)
 }
 
 //------------------------------------------------------------------------------
-void Poly::ComponentDeleter::operator()(ComponentBase* c)
+void pe::api::ecs::ComponentDeleter::operator()(ComponentBase* c)
 {
 	const size_t componentID = c->GetComponentID();
 	Scene* scene = c->GetOwner()->GetEntityScene();
@@ -36,7 +36,7 @@ Entity::Entity(Scene* world, Entity* parent)
 		SetParent(parent);
 }
 
-void Poly::Entity::SetBBoxDirty()
+void pe::api::ecs::Entity::SetBBoxDirty()
 {
 	for (eEntityBoundingChannel channel : IterateEnum<eEntityBoundingChannel>())
 		BBoxDirty[channel] = true;
@@ -44,7 +44,7 @@ void Poly::Entity::SetBBoxDirty()
 		Parent->SetBBoxDirty();
 }
 
-void Poly::Entity::ReleaseFromParent()
+void pe::api::ecs::Entity::ReleaseFromParent()
 {
 	if (Parent != nullptr)
 	{
@@ -59,21 +59,21 @@ void Poly::Entity::ReleaseFromParent()
 	}
 }
 
-Poly::Entity::Entity()
+pe::api::ecs::Entity::Entity()
  : Transform(this)
 {
 	Components.Resize(MAX_COMPONENTS_COUNT);
 	std::fill(Components.Begin(), Components.End(), nullptr);
 }
 
-Poly::Entity::~Entity()
+pe::api::ecs::Entity::~Entity()
 {
 	//ReleaseFromParent();
 	Children.Clear();
 	Components.Clear();
 }
 
-void* Poly::Entity::AllocateEntity(RTTI::TypeInfo t)
+void* pe::api::ecs::Entity::AllocateEntity(RTTI::TypeInfo t)
 {
 	Scene* s = gEngine->GetCurrentlySerializedScene();
 	Entity* ent = s->GetEntityAllocator().Alloc();
@@ -81,7 +81,7 @@ void* Poly::Entity::AllocateEntity(RTTI::TypeInfo t)
 	return ent;
 }
 
-void* Poly::Entity::AllocateComponent(RTTI::TypeInfo t)
+void* pe::api::ecs::Entity::AllocateComponent(RTTI::TypeInfo t)
 {
 	Scene* s = gEngine->GetCurrentlySerializedScene();
 	const size_t id = ComponentManager::Get().GetComponentID(t).Value();
@@ -91,7 +91,7 @@ void* Poly::Entity::AllocateComponent(RTTI::TypeInfo t)
 	return ptr;
 }
 
-void Poly::Entity::SetParent(Entity* parent)
+void pe::api::ecs::Entity::SetParent(Entity* parent)
 {
 	ASSERTE(parent, "New parent cannot be null");
 	ASSERTE(parent != this, "Cannot parent myself!");
@@ -106,7 +106,7 @@ void Poly::Entity::SetParent(Entity* parent)
 	Transform.UpdateParentTransform();
 }
 
-bool Poly::Entity::ContainsChildRecursive(Entity* child) const
+bool pe::api::ecs::Entity::ContainsChildRecursive(Entity* child) const
 {
 	if (Children.Contains([child](const EntityUniquePtr& p) { return p.get() == child; }))
 		return true;
@@ -118,7 +118,7 @@ bool Poly::Entity::ContainsChildRecursive(Entity* child) const
 	return false;
 }
 
-const AABox& Poly::Entity::GetLocalBoundingBox(eEntityBoundingChannel channel) const
+const AABox& pe::api::ecs::Entity::GetLocalBoundingBox(eEntityBoundingChannel channel) const
 {
 	if (BBoxDirty[channel])
 	{
@@ -147,7 +147,7 @@ const AABox& Poly::Entity::GetLocalBoundingBox(eEntityBoundingChannel channel) c
 	return LocalBBox[channel];
 }
 
-AABox Poly::Entity::GetGlobalBoundingBox(eEntityBoundingChannel channel) const
+AABox pe::api::ecs::Entity::GetGlobalBoundingBox(eEntityBoundingChannel channel) const
 {
 	return GetLocalBoundingBox(channel).GetTransformed(GetTransform().GetWorldFromModel());
 }

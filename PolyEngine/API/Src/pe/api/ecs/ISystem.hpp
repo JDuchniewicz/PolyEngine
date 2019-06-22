@@ -2,7 +2,7 @@
 
 #include <Defines.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	class Scene;
 	class ISystem : public BaseObject<>

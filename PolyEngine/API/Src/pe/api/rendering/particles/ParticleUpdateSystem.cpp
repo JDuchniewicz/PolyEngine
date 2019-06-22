@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Particles/ParticleUpdateSystem.hpp>
-#include <Rendering/Particles/ParticleComponent.hpp>
-#include <ECS/Scene.hpp>
-#include <Time/TimeSystem.hpp>
+#include <pe/api/rendering/particles/ParticleUpdateSystem.hpp>
+#include <pe/api/rendering/particles/ParticleComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
+#include <pe/api/time/TimeSystem.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering::particles;
 
 void ParticleUpdateSystem::ParticleUpdatePhase(Scene* world)
 {
@@ -59,7 +59,7 @@ void ParticleUpdateSystem::EmitterUpdate(Scene* world, ParticleEmitter* emitter)
 {
 	// gConsole.LogInfo("ParticleEmitter::Update {}/{}", emitter->ParticlesPool.GetSize(), emitter->settings.MaxSize);
 
-	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(world, Poly::eEngineTimer::GAMEPLAY));
+	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(world, pe::api::time::eEngineTimer::GAMEPLAY));
 
 	if (emitter->IsBurstEnabled)
 	{

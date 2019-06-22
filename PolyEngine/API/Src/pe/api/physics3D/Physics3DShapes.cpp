@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <Physics3D/Physics3DShapes.hpp>
-#include <Physics3D/Physics3DShapesImpl.hpp>
-#include <Resources/ResourceManager.hpp>
+#include <pe/api/physics3D/Physics3DShapes.hpp>
+#include <pe/api/physics3D/Physics3DShapesImpl.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
 
 //------------------------------------------------------------------------------
-Poly::Physics3DShape::~Physics3DShape()
+pe::api::physics3D::Physics3DShape::~Physics3DShape()
 {
 	if (ImplData)
 	{
@@ -16,7 +16,7 @@ Poly::Physics3DShape::~Physics3DShape()
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DStaticMeshSource::Physics3DStaticMeshSource()
+pe::api::physics3D::Physics3DStaticMeshSource::Physics3DStaticMeshSource()
 {
 	ImplData = std::make_unique<Physics3DStaticMeshSourceImpl>();
 	ImplData->BulletMesh = new btTriangleMesh();
@@ -24,13 +24,13 @@ Poly::Physics3DStaticMeshSource::Physics3DStaticMeshSource()
 
 //------------------------------------------------------------------------------
 
-Poly::Physics3DStaticMeshSource::~Physics3DStaticMeshSource()
+pe::api::physics3D::Physics3DStaticMeshSource::~Physics3DStaticMeshSource()
 {
 	ImplData.release();
 }
 
 //------------------------------------------------------------------------------
-void Poly::Physics3DStaticMeshSource::LoadMesh(const String& meshPath, eResourceSource source)
+void pe::api::physics3D::Physics3DStaticMeshSource::LoadMesh(const String& meshPath, eResourceSource source)
 {
 	MeshResource* resource = ResourceManager<MeshResource>::Load(meshPath, source);
 	const Dynarray<MeshResource::SubMesh*>& subMeshes = resource->GetSubMeshes();
@@ -44,7 +44,7 @@ void Poly::Physics3DStaticMeshSource::LoadMesh(const String& meshPath, eResource
 }
 
 //------------------------------------------------------------------------------
-void Poly::Physics3DStaticMeshSource::LoadMesh(const MeshResource::SubMesh& subMesh)
+void pe::api::physics3D::Physics3DStaticMeshSource::LoadMesh(const MeshResource::SubMesh& subMesh)
 {
 	const Mesh& mesh = subMesh.GetMeshData();
 
@@ -63,13 +63,13 @@ void Poly::Physics3DStaticMeshSource::LoadMesh(const MeshResource::SubMesh& subM
 }
 
 //------------------------------------------------------------------------------
-void Poly::Physics3DStaticMeshSource::AddTriangle(const Vector& a, const Vector& b, const Vector& c)
+void pe::api::physics3D::Physics3DStaticMeshSource::AddTriangle(const Vector& a, const Vector& b, const Vector& c)
 {
 	ImplData->BulletMesh->addTriangle({ a.X, a.Y, a.Z }, { b.X, b.Y, b.Z }, { c.X, c.Y, c.Z }, true);
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DStaticMeshShape::Physics3DStaticMeshShape(const Physics3DStaticMeshSource& source)
+pe::api::physics3D::Physics3DStaticMeshShape::Physics3DStaticMeshShape(const Physics3DStaticMeshSource& source)
 	: Physics3DShape(ePhysics3DShape::MESH)
 {
 	ImplData = new Physics3DShapeImpl();
@@ -77,7 +77,7 @@ Poly::Physics3DStaticMeshShape::Physics3DStaticMeshShape(const Physics3DStaticMe
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DPlaneShape::Physics3DPlaneShape(Vector normal, float halfExtent) 
+pe::api::physics3D::Physics3DPlaneShape::Physics3DPlaneShape(Vector normal, float halfExtent) 
 	: Physics3DShape(ePhysics3DShape::PLANE), 
 	Normal(normal), 
 	HalfExtent(halfExtent)
@@ -87,7 +87,7 @@ Poly::Physics3DPlaneShape::Physics3DPlaneShape(Vector normal, float halfExtent)
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DBoxShape::Physics3DBoxShape(Vector halfExtents)
+pe::api::physics3D::Physics3DBoxShape::Physics3DBoxShape(Vector halfExtents)
 	: Physics3DShape(ePhysics3DShape::BOX),
 	HalfExtents(halfExtents)
 {
@@ -96,7 +96,7 @@ Poly::Physics3DBoxShape::Physics3DBoxShape(Vector halfExtents)
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DSphereShape::Physics3DSphereShape(float radius)
+pe::api::physics3D::Physics3DSphereShape::Physics3DSphereShape(float radius)
 	: Physics3DShape(ePhysics3DShape::SPHERE),
 	Radius(radius)
 {
@@ -105,7 +105,7 @@ Poly::Physics3DSphereShape::Physics3DSphereShape(float radius)
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DCapsuleShape::Physics3DCapsuleShape(float radius, float height)
+pe::api::physics3D::Physics3DCapsuleShape::Physics3DCapsuleShape(float radius, float height)
 	: Physics3DShape(ePhysics3DShape::PLANE), 
 	Radius(radius), 
 	Height(height)

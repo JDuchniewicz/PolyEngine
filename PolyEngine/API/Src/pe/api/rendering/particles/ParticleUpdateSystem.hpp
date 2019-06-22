@@ -2,7 +2,7 @@
 
 #include <Defines.hpp>
 
-namespace Poly
+namespace pe::api::rendering::particles
 {
 	class Scene;
 	class EntityTransform;

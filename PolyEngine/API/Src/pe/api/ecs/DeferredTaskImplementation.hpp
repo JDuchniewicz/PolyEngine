@@ -2,11 +2,11 @@
 
 #include <Defines.hpp>
 #include <Memory/SafePtr.hpp>
-#include <ECS/DeferredTaskSystem.hpp>
-#include <ECS/DeferredTaskBase.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/ecs/DeferredTaskSystem.hpp>
+#include <pe/api/ecs/DeferredTaskBase.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	//Helper structs. Used in AddComponentDeferredTask.
 	//These are needed to store 'args...' in std::tuple for later use (in Execute(...) method)

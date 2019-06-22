@@ -1,7 +1,7 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/PostprocessSettingsComponent.hpp>
+#include <pe/api/rendering/PostprocessSettingsComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::PostprocessSettingsComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::PostprocessSettingsComponent)

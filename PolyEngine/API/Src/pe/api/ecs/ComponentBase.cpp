@@ -1,5 +1,5 @@
 #include <EnginePCH.hpp>
 
-#include <ECS/ComponentBase.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
 
-RTTI_DEFINE_TYPE(::Poly::ComponentBase);
+RTTI_DEFINE_TYPE(::pe::api::ecs::ComponentBase);

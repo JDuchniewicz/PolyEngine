@@ -2,9 +2,9 @@
 
 #include <Defines.hpp>
 #include <Math/AARect.hpp>
-#include <Rendering/Camera/CameraComponent.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
 
-namespace Poly
+namespace pe::api::rendering
 {
 	class CameraComponent;
 

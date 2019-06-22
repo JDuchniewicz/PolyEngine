@@ -1,6 +1,6 @@
-#include <ECS/ComponentIDGenerator.hpp>
+#include <pe/api/ecs/ComponentIDGenerator.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	namespace Impl
 	{

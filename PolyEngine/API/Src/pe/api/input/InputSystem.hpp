@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Input/InputQueue.hpp>
-#include <Input/OutputQueue.hpp>
+#include <pe/api/input/InputQueue.hpp>
+#include <pe/api/input/OutputQueue.hpp>
 
-namespace Poly
+namespace pe::api::input
 {
 	class Scene;
 

@@ -1,14 +1,14 @@
 #include <EnginePCH.hpp>
 
-#include <Time/TimeSystem.hpp>
-#include <Time/TimeWorldComponent.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/time/TimeSystem.hpp>
+#include <pe/api/time/TimeWorldComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
 using std::chrono::steady_clock;
 using std::chrono::duration_cast;
 using std::chrono::duration;
 
-using namespace Poly;
+using namespace pe::api::time;
 
 //------------------------------------------------------------------------------
 void TimeSystem::TimeUpdatePhase(Scene * world)

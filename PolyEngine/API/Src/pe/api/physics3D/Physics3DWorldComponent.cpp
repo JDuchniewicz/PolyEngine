@@ -1,11 +1,11 @@
 #include <EnginePCH.hpp>
 
-#include <Physics3D/Physics3DWorldComponent.hpp>
+#include <pe/api/physics3D/Physics3DWorldComponent.hpp>
 
-RTTI_DEFINE_COMPONENT(Poly::Physics3DWorldComponent)
+RTTI_DEFINE_COMPONENT(pe::api::physics3D::Physics3DWorldComponent)
 
 //------------------------------------------------------------------------------
-Poly::Physics3DWorldComponent::Physics3DWorldComponent(Physics3DConfig config)
+pe::api::physics3D::Physics3DWorldComponent::Physics3DWorldComponent(Physics3DConfig config)
 	: Config(config)
 {
 	CollisionConfiguration = std::make_unique<btDefaultCollisionConfiguration>();
@@ -19,7 +19,7 @@ Poly::Physics3DWorldComponent::Physics3DWorldComponent(Physics3DConfig config)
 }
 
 //------------------------------------------------------------------------------
-Poly::Physics3DWorldComponent::~Physics3DWorldComponent()
+pe::api::physics3D::Physics3DWorldComponent::~Physics3DWorldComponent()
 {
 	DynamicsWorld.release();
 	Solver.release();
@@ -29,13 +29,13 @@ Poly::Physics3DWorldComponent::~Physics3DWorldComponent()
 }
 
 //------------------------------------------------------------------------------
-void Poly::Physics3DWorldComponent::SetGravity(const Vector& g)
+void pe::api::physics3D::Physics3DWorldComponent::SetGravity(const Vector& g)
 {
 	Config.Gravity = g;
 	DynamicsWorld->setGravity(btVector3(g.X, g.Y, g.Z));
 }
 
-void Poly::Physics3DWorldComponent::SetTimeStep(float timestep)
+void pe::api::physics3D::Physics3DWorldComponent::SetTimeStep(float timestep)
 {
 	Config.TimeStep = timestep;
 }

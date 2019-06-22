@@ -1,12 +1,12 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/Entity.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Audio/SoundWorldComponent.hpp>
+#include <pe/api/ecs/Entity.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/audio/SoundWorldComponent.hpp>
 #include <Engine.hpp>
 
-namespace Poly {
+namespace pe::api::ecs {
 
 	namespace DeferredTaskSystem
 	{
@@ -25,7 +25,7 @@ namespace Poly {
 	/// It contains entities, its components and world components.</summary>
 	class ENGINE_DLLEXPORT Scene : public RTTIBase
 	{
-		RTTI_DECLARE_TYPE_DERIVED(::Poly::Scene, ::Poly::RTTIBase)
+		RTTI_DECLARE_TYPE_DERIVED(::pe::api::ecs::Scene, ::Poly::RTTIBase)
 		{
 			//@todo add factory creation
 			RTTI_PROPERTY_FACTORY_AUTONAME(RootEntity, &Entity::AllocateEntity, RTTI::ePropertyFlag::NONE);
@@ -279,4 +279,4 @@ namespace Poly {
 
 		Entity::EntityUniquePtr RootEntity;
 	};
-} //namespace Poly
+} //namespace pe::api::ecs

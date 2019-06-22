@@ -3,10 +3,10 @@
 #include <Defines.hpp>
 #include <Collections/Dynarray.hpp>
 #include <Collections/String.hpp>
-#include <Resources/ResourceBase.hpp>
-#include <Resources/TextureResource.hpp>
-#include <Resources/Mesh.hpp>
-#include <Rendering/IRenderingDevice.hpp>
+#include <pe/api/resources/ResourceBase.hpp>
+#include <pe/api/resources/TextureResource.hpp>
+#include <pe/api/resources/Mesh.hpp>
+#include <pe/api/rendering/IRenderingDevice.hpp>
 
 struct aiMesh;
 struct aiMaterial;
@@ -14,7 +14,7 @@ struct aiAnimation;
 
 typedef unsigned int GLuint;
  
-namespace Poly
+namespace pe::api::resources
 {
 	class ENGINE_DLLEXPORT MeshResource : public ResourceBase
 	{

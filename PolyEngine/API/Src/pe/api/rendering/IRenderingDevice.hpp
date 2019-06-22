@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Resources/Mesh.hpp>
+#include <pe/api/resources/Mesh.hpp>
 
-namespace Poly
+namespace pe::api::rendering
 {
 	class Scene;
 	class ParticleEmitter;

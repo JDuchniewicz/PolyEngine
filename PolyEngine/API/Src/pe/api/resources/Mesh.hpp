@@ -4,7 +4,7 @@
 #include <Collections/Dynarray.hpp>
 #include <Math/Vector3f.hpp>
 
-namespace Poly
+namespace pe::api::resources
 {
 	class TextureResource;
 

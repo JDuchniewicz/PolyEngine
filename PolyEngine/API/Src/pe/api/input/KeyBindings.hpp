@@ -2,7 +2,7 @@
 
 #include <Defines.hpp>
 
-namespace Poly
+namespace pe::api::input
 {
 	enum class eControllerAxis
 	{

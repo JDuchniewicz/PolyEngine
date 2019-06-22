@@ -1,12 +1,12 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Time/TimeSystem.hpp>
-#include <Time/Timer.hpp>
-#include <ECS/ComponentBase.hpp>
+#include <pe/api/time/TimeSystem.hpp>
+#include <pe/api/time/Timer.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
 
 
-namespace Poly
+namespace pe::api::time
 {
 	class ENGINE_DLLEXPORT TimeWorldComponent : public ComponentBase
 	{
@@ -19,7 +19,7 @@ namespace Poly
 		friend double TimeSystem::GetTimerMultiplier(Scene* world, size_t id);
 		friend double TimeSystem::GetTimerMultiplier(Scene* world, eEngineTimer timerType);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::TimeWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::time::TimeWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		TimeWorldComponent();
 

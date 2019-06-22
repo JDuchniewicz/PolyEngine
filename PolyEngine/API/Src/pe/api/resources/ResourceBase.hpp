@@ -4,7 +4,7 @@
 #include <Collections/String.hpp>
 #include <Memory/RefCountedBase.hpp>
 
-namespace Poly
+namespace pe::api::resources
 {
 	//------------------------------------------------------------------------------
 	SILENCE_MSVC_WARNING(4275, "Exporting stl may cause incompatibility. We use same CRT so it's ok.")

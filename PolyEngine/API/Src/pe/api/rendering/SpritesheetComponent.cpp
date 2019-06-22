@@ -1,13 +1,13 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Camera/CameraComponent.hpp>
-#include <Rendering/SpritesheetComponent.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/TextureResource.hpp>
+#include <pe/api/rendering/camera/CameraComponent.hpp>
+#include <pe/api/rendering/SpritesheetComponent.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/resources/TextureResource.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::SpritesheetComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::SpritesheetComponent)
 
 SpritesheetComponent::SpritesheetComponent(const SpritesheetSettings& settings) : Settings(settings)
 {

@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/ComponentBase.hpp>
-#include <Input/KeyBindings.hpp>
-#include <Input/InputSystem.hpp>
+#include <pe/api/ecs/ComponentBase.hpp>
+#include <pe/api/input/KeyBindings.hpp>
+#include <pe/api/input/InputSystem.hpp>
 
-namespace Poly
+namespace pe::api::input
 {
 	struct ControllerState 
 	{
@@ -22,7 +22,7 @@ namespace Poly
 	{
 		friend void InputSystem::InputPhase(Scene*);
 	public:
-		RTTI_DECLARE_COMPONENT(::Poly::InputWorldComponent) { NO_RTTI_PROPERTY(); }
+		RTTI_DECLARE_COMPONENT(::pe::api::input::InputWorldComponent) { NO_RTTI_PROPERTY(); }
 
 		InputWorldComponent() = default;
 

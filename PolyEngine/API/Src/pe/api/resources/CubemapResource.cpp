@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Resources/CubemapResource.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/resources/CubemapResource.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::resources;
 
 CubemapResource::CubemapResource(const EnumArray<String, eCubemapSide> paths)
 {

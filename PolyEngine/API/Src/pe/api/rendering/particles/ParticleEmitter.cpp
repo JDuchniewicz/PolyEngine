@@ -1,9 +1,9 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/Particles/ParticleEmitter.hpp>
-#include <Resources/ResourceManager.hpp>
+#include <pe/api/rendering/particles/ParticleEmitter.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering::particles;
 
 ParticleEmitter::ParticleEmitter(const Settings& settings)
 	: settings(settings), ToEmit(settings.InitialSize), ParticlesPool(settings.MaxSize)

@@ -1,10 +1,10 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/ViewportWorldComponent.hpp>
+#include <pe/api/rendering/ViewportWorldComponent.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::ViewportWorldComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::ViewportWorldComponent)
 
 ViewportWorldComponent::ViewportWorldComponent()
 {

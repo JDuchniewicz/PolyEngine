@@ -1,16 +1,16 @@
 #include <EnginePCH.hpp>
 
-#include <Physics2D/Rigidbody2DComponent.hpp>
-#include <Physics2D/Physics2DWorldComponent.hpp>
-#include <Physics2D/Physics2DColliders.hpp>
-#include <Physics2D/RigidBody2DImpl.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/physics2D/Rigidbody2DComponent.hpp>
+#include <pe/api/physics2D/Physics2DWorldComponent.hpp>
+#include <pe/api/physics2D/Physics2DColliders.hpp>
+#include <pe/api/physics2D/RigidBody2DImpl.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::physics2D;
 
-RTTI_DEFINE_COMPONENT(::Poly::RigidBody2DComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::physics2D::RigidBody2DComponent)
 
-Poly::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType type, float density, float friction)
+pe::api::physics2D::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType type, float density, float friction)
 	: BodyWorld(world), BodyType(type)
 {
 	ImplData = std::make_unique<RigidBody2DData>();
@@ -38,7 +38,7 @@ Poly::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType 
 	ImplData->FixtureDef.userData = this;
 }
 
-Poly::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType type, RigidBody2DSensorTag /*sensorTag*/)
+pe::api::physics2D::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType type, RigidBody2DSensorTag /*sensorTag*/)
 	: BodyWorld(world), BodyType(type)
 {
 	ImplData = std::make_unique<RigidBody2DData>();
@@ -65,12 +65,12 @@ Poly::RigidBody2DComponent::RigidBody2DComponent(Scene* world, eRigidBody2DType 
 	ImplData->FixtureDef.userData = this;
 }
 
-Poly::RigidBody2DComponent::~RigidBody2DComponent()
+pe::api::physics2D::RigidBody2DComponent::~RigidBody2DComponent()
 {
 	BodyWorld->GetWorldComponent<Physics2DWorldComponent>()->Scene->DestroyBody(ImplData->Body);
 }
 
-void Poly::RigidBody2DComponent::EnsureInit()
+void pe::api::physics2D::RigidBody2DComponent::EnsureInit()
 {
 	if (!ImplData->Fixture)
 	{
@@ -93,67 +93,67 @@ void Poly::RigidBody2DComponent::EnsureInit()
 	}
 }
 
-void Poly::RigidBody2DComponent::DebugPrintInfo() const
+void pe::api::physics2D::RigidBody2DComponent::DebugPrintInfo() const
 {
 	b2Vec2 position = ImplData->Body->GetPosition();
 	float32 angle = ImplData->Body->GetAngle();
 	gConsole.LogInfo("{} {} {}", position.x, position.y, angle);
 }
 
-void Poly::RigidBody2DComponent::ApplyForceToCenter(const Vector& force)
+void pe::api::physics2D::RigidBody2DComponent::ApplyForceToCenter(const Vector& force)
 {
 	const b2Vec2& center = ImplData->Body->GetWorldCenter();
 	ImplData->Body->ApplyForce(b2Vec2(force.X, force.Y),center, true);
 }
 
-void Poly::RigidBody2DComponent::ApplyImpulseToCenter(const Vector& impulse)
+void pe::api::physics2D::RigidBody2DComponent::ApplyImpulseToCenter(const Vector& impulse)
 {
 	const b2Vec2& center = ImplData->Body->GetWorldCenter();
 	ImplData->Body->ApplyLinearImpulse(b2Vec2(impulse.X, impulse.Y), center, true);
 }
 
-void Poly::RigidBody2DComponent::SetLinearDamping(float dampfactor)
+void pe::api::physics2D::RigidBody2DComponent::SetLinearDamping(float dampfactor)
 {
 	ImplData->Body->SetLinearDamping(dampfactor);
 }
 
-void Poly::RigidBody2DComponent::SetAngularDamping(float dampfactor)
+void pe::api::physics2D::RigidBody2DComponent::SetAngularDamping(float dampfactor)
 {
 	ImplData->Body->SetAngularDamping(dampfactor);
 }
 
-void Poly::RigidBody2DComponent::SetFixedRotation(bool fixed)
+void pe::api::physics2D::RigidBody2DComponent::SetFixedRotation(bool fixed)
 {
 	ImplData->Body->SetFixedRotation(fixed);
 }
 
-float Poly::RigidBody2DComponent::GetDensity() const
+float pe::api::physics2D::RigidBody2DComponent::GetDensity() const
 {
 	return ImplData->Fixture->GetDensity();
 }
 
-Vector Poly::RigidBody2DComponent::GetLinearVelocity() const
+Vector pe::api::physics2D::RigidBody2DComponent::GetLinearVelocity() const
 {
 	b2Vec2 v = ImplData->Body->GetLinearVelocity();
 	return Vector(v.x, v.y, 0);
 }
 
-void Poly::RigidBody2DComponent::SetLinearVelocity(const Vector& speed)
+void pe::api::physics2D::RigidBody2DComponent::SetLinearVelocity(const Vector& speed)
 {
 	ImplData->Body->SetLinearVelocity(b2Vec2(speed.X, speed.Y));
 }
 
-float Poly::RigidBody2DComponent::GetAngularVelocity() const
+float pe::api::physics2D::RigidBody2DComponent::GetAngularVelocity() const
 {
 	return ImplData->Body->GetAngularVelocity();
 }
 
-void Poly::RigidBody2DComponent::SetAngularVelocity(float speed)
+void pe::api::physics2D::RigidBody2DComponent::SetAngularVelocity(float speed)
 {
 	ImplData->Body->SetAngularVelocity(speed);
 }
 
-void Poly::RigidBody2DComponent::UpdatePosition()
+void pe::api::physics2D::RigidBody2DComponent::UpdatePosition()
 {
 	EntityTransform& transform = GetTransform();
 	ASSERTE(GetOwner()->IsChildOfRoot(), "Physics cannot be applied to child entity");
@@ -164,7 +164,7 @@ void Poly::RigidBody2DComponent::UpdatePosition()
 	ImplData->Body->SetTransform(b2Vec2(localTrans.X, localTrans.Y), localRot.Z.AsRadians());
 }
 
-void Poly::RigidBody2DComponent::SetDensity(float density)
+void pe::api::physics2D::RigidBody2DComponent::SetDensity(float density)
 {
 	ImplData->Fixture->SetDensity(density);
 }

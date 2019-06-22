@@ -1,30 +1,30 @@
 #include <EnginePCH.hpp>
 
-#include <Imgui/ImguiSystem.hpp>
-#include <Time/TimeSystem.hpp>
-#include <Input/InputWorldComponent.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/imgui/ImguiSystem.hpp>
+#include <pe/api/time/TimeSystem.hpp>
+#include <pe/api/input/InputWorldComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-using namespace Poly;
+using namespace pe::api::imgui;
 
-eMouseCursorType GetCursorType(ImGuiMouseCursor imguiCursor)
+pe::api::input::eMouseCursorType GetCursorType(ImGuiMouseCursor imguiCursor)
 {
 	switch (imguiCursor)
 	{
-		case (int)ImGuiMouseCursor_None:		return eMouseCursorType::ARROW;
-		case (int)ImGuiMouseCursor_Arrow:		return eMouseCursorType::ARROW;
-		case (int)ImGuiMouseCursor_TextInput:	return eMouseCursorType::TEXTINPUT;
-		case (int)ImGuiMouseCursor_ResizeAll:	return eMouseCursorType::RESIZEALL;
-		case (int)ImGuiMouseCursor_ResizeNS:	return eMouseCursorType::RESIZENS;
-		case (int)ImGuiMouseCursor_ResizeEW:	return eMouseCursorType::RESIZEEW;
-		case (int)ImGuiMouseCursor_ResizeNESW:	return eMouseCursorType::RESIZENESW;
-		case (int)ImGuiMouseCursor_ResizeNWSE:	return eMouseCursorType::RESIZENWSE;
-		case (int)ImGuiMouseCursor_Hand:		return eMouseCursorType::HAND;
+		case (int)ImGuiMouseCursor_None:		return pe::api::input::eMouseCursorType::ARROW;
+		case (int)ImGuiMouseCursor_Arrow:		return pe::api::input::eMouseCursorType::ARROW;
+		case (int)ImGuiMouseCursor_TextInput:	return pe::api::input::eMouseCursorType::TEXTINPUT;
+		case (int)ImGuiMouseCursor_ResizeAll:	return pe::api::input::eMouseCursorType::RESIZEALL;
+		case (int)ImGuiMouseCursor_ResizeNS:	return pe::api::input::eMouseCursorType::RESIZENS;
+		case (int)ImGuiMouseCursor_ResizeEW:	return pe::api::input::eMouseCursorType::RESIZEEW;
+		case (int)ImGuiMouseCursor_ResizeNESW:	return pe::api::input::eMouseCursorType::RESIZENESW;
+		case (int)ImGuiMouseCursor_ResizeNWSE:	return pe::api::input::eMouseCursorType::RESIZENWSE;
+		case (int)ImGuiMouseCursor_Hand:		return pe::api::input::eMouseCursorType::HAND;
 		default:
 			ASSERTE(false, "Invalid ImGuiMouseCursor_!");
 			break;
 	}
-	return eMouseCursorType::_COUNT;
+	return pe::api::input::eMouseCursorType::_COUNT;
 }
 
 ImguiSystem::ImguiSystem()
@@ -57,33 +57,33 @@ ImguiSystem::ImguiSystem()
 	io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;	// We can honor GetMouseCursor() values (optional)
 	io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;	// We can honor io.WantSetMousePos requests (optional, rarely used)
 	// Keyboard mapping. ImGui will use those indices to peek into the io.KeysDown[] array.
-	io.KeyMap[ImGuiKey_Tab] = (int)eKey::TAB;				// SDL_SCANCODE_TAB;
-	io.KeyMap[ImGuiKey_LeftArrow] = (int)eKey::LEFT;		// SDL_SCANCODE_LEFT;
-	io.KeyMap[ImGuiKey_RightArrow] = (int)eKey::RIGHT;		// SDL_SCANCODE_RIGHT;
-	io.KeyMap[ImGuiKey_UpArrow] = (int)eKey::UP;			// SDL_SCANCODE_UP;
-	io.KeyMap[ImGuiKey_DownArrow] = (int)eKey::DOWN;		// SDL_SCANCODE_DOWN;
-	io.KeyMap[ImGuiKey_PageUp] = (int)eKey::PAGEUP;			// SDL_SCANCODE_PAGEUP;
-	io.KeyMap[ImGuiKey_PageDown] = (int)eKey::PAGEDOWN;		// SDL_SCANCODE_PAGEDOWN;
-	io.KeyMap[ImGuiKey_Home] = (int)eKey::HOME;				// SDL_SCANCODE_HOME;
-	io.KeyMap[ImGuiKey_End] = (int)eKey::END;				// SDL_SCANCODE_END;
-	io.KeyMap[ImGuiKey_Insert] = (int)eKey::INSERT;			// SDL_SCANCODE_INSERT;
-	io.KeyMap[ImGuiKey_Delete] = (int)eKey::DEL;			// SDL_SCANCODE_DELETE;
-	io.KeyMap[ImGuiKey_Backspace] = (int)eKey::BACKSPACE;	// SDL_SCANCODE_BACKSPACE;
-	io.KeyMap[ImGuiKey_Space] = (int)eKey::SPACE;			// SDL_SCANCODE_SPACE;
-	io.KeyMap[ImGuiKey_Enter] = (int)eKey::RETURN;			// SDL_SCANCODE_RETURN;
-	io.KeyMap[ImGuiKey_Escape] = (int)eKey::ESCAPE;			// SDL_SCANCODE_ESCAPE;
-	io.KeyMap[ImGuiKey_A] = (int)eKey::KEY_A;				// SDL_SCANCODE_A;
-	io.KeyMap[ImGuiKey_C] = (int)eKey::KEY_C;				// SDL_SCANCODE_C;
-	io.KeyMap[ImGuiKey_V] = (int)eKey::KEY_V;				// SDL_SCANCODE_V;
-	io.KeyMap[ImGuiKey_X] = (int)eKey::KEY_X;				// SDL_SCANCODE_X;
-	io.KeyMap[ImGuiKey_Y] = (int)eKey::KEY_Y;				// SDL_SCANCODE_Y;
-	io.KeyMap[ImGuiKey_Z] = (int)eKey::KEY_Z;				// SDL_SCANCODE_Z;
+	io.KeyMap[ImGuiKey_Tab] = (int)pe::api::input::eKey::TAB;				// SDL_SCANCODE_TAB;
+	io.KeyMap[ImGuiKey_LeftArrow] = (int)pe::api::input::eKey::LEFT;		// SDL_SCANCODE_LEFT;
+	io.KeyMap[ImGuiKey_RightArrow] = (int)pe::api::input::eKey::RIGHT;		// SDL_SCANCODE_RIGHT;
+	io.KeyMap[ImGuiKey_UpArrow] = (int)pe::api::input::eKey::UP;			// SDL_SCANCODE_UP;
+	io.KeyMap[ImGuiKey_DownArrow] = (int)pe::api::input::eKey::DOWN;		// SDL_SCANCODE_DOWN;
+	io.KeyMap[ImGuiKey_PageUp] = (int)pe::api::input::eKey::PAGEUP;			// SDL_SCANCODE_PAGEUP;
+	io.KeyMap[ImGuiKey_PageDown] = (int)pe::api::input::eKey::PAGEDOWN;		// SDL_SCANCODE_PAGEDOWN;
+	io.KeyMap[ImGuiKey_Home] = (int)pe::api::input::eKey::HOME;				// SDL_SCANCODE_HOME;
+	io.KeyMap[ImGuiKey_End] = (int)pe::api::input::eKey::END;				// SDL_SCANCODE_END;
+	io.KeyMap[ImGuiKey_Insert] = (int)pe::api::input::eKey::INSERT;			// SDL_SCANCODE_INSERT;
+	io.KeyMap[ImGuiKey_Delete] = (int)pe::api::input::eKey::DEL;			// SDL_SCANCODE_DELETE;
+	io.KeyMap[ImGuiKey_Backspace] = (int)pe::api::input::eKey::BACKSPACE;	// SDL_SCANCODE_BACKSPACE;
+	io.KeyMap[ImGuiKey_Space] = (int)pe::api::input::eKey::SPACE;			// SDL_SCANCODE_SPACE;
+	io.KeyMap[ImGuiKey_Enter] = (int)pe::api::input::eKey::RETURN;			// SDL_SCANCODE_RETURN;
+	io.KeyMap[ImGuiKey_Escape] = (int)pe::api::input::eKey::ESCAPE;			// SDL_SCANCODE_ESCAPE;
+	io.KeyMap[ImGuiKey_A] = (int)pe::api::input::eKey::KEY_A;				// SDL_SCANCODE_A;
+	io.KeyMap[ImGuiKey_C] = (int)pe::api::input::eKey::KEY_C;				// SDL_SCANCODE_C;
+	io.KeyMap[ImGuiKey_V] = (int)pe::api::input::eKey::KEY_V;				// SDL_SCANCODE_V;
+	io.KeyMap[ImGuiKey_X] = (int)pe::api::input::eKey::KEY_X;				// SDL_SCANCODE_X;
+	io.KeyMap[ImGuiKey_Y] = (int)pe::api::input::eKey::KEY_Y;				// SDL_SCANCODE_Y;
+	io.KeyMap[ImGuiKey_Z] = (int)pe::api::input::eKey::KEY_Z;				// SDL_SCANCODE_Z;
 
 	io.SetClipboardTextFn = gEngine->SetClipboardTextFunction;
 	io.GetClipboardTextFn = gEngine->GetClipboardTextFunction;
 	io.ClipboardUserData = NULL;
 
-	gConsole.LogInfo("ImguiSystem::Ctor GetCurrentContext: {}", ImGui::GetCurrentContext() != nullptr);
+	Poly::gConsole.LogInfo("ImguiSystem::Ctor GetCurrentContext: {}", ImGui::GetCurrentContext() != nullptr);
 }
 
 void ImguiSystem::OnUpdate(Scene* scene)
@@ -99,7 +99,7 @@ void ImguiSystem::OnUpdate(Scene* scene)
 	ImGuiIO& io = ImGui::GetIO();
 	if (!io.Fonts->IsBuilt())
 	{
-		gConsole.LogInfo("ImguiSystem::ImguiUpdatePhase fonts are not build yet, returning");
+		Poly::gConsole.LogInfo("ImguiSystem::ImguiUpdatePhase fonts are not build yet, returning");
 		return;
 	}
 
@@ -109,16 +109,16 @@ void ImguiSystem::OnUpdate(Scene* scene)
 	if (inputCmp->GetWheelPosDelta().Y < 0) io.MouseWheel -= 1;
 	
 	// dummy loop over key codes
-	for (int key = ((int)eKey::_COUNT) - 1; key >= 0; --key)
+	for (int key = ((int)pe::api::input::eKey::_COUNT) - 1; key >= 0; --key)
 	{
-		if (inputCmp->IsPressed((eKey)key) || inputCmp->IsReleased((eKey)key))
+		if (inputCmp->IsPressed((pe::api::input::eKey)key) || inputCmp->IsReleased((pe::api::input::eKey)key))
 		{
 			IM_ASSERT(key >= 0 && key < IM_ARRAYSIZE(io.KeysDown));
-			io.KeysDown[key] = inputCmp->IsPressed((eKey)key);
-			io.KeyShift = inputCmp->IsPressed(eKey::LSHIFT) || inputCmp->IsPressed(eKey::RSHIFT);
-			io.KeyCtrl = inputCmp->IsPressed(eKey::LCTRL) || inputCmp->IsPressed(eKey::RCTRL);
-			io.KeyAlt = inputCmp->IsPressed(eKey::LALT) || inputCmp->IsPressed(eKey::RALT);
-			io.KeySuper = inputCmp->IsPressed(eKey::LGUI) || inputCmp->IsPressed(eKey::RGUI);
+			io.KeysDown[key] = inputCmp->IsPressed((pe::api::input::eKey)key);
+			io.KeyShift = inputCmp->IsPressed(pe::api::input::eKey::LSHIFT) || inputCmp->IsPressed(pe::api::input::eKey::RSHIFT);
+			io.KeyCtrl = inputCmp->IsPressed(pe::api::input::eKey::LCTRL) || inputCmp->IsPressed(pe::api::input::eKey::RCTRL);
+			io.KeyAlt = inputCmp->IsPressed(pe::api::input::eKey::LALT) || inputCmp->IsPressed(pe::api::input::eKey::RALT);
+			io.KeySuper = inputCmp->IsPressed(pe::api::input::eKey::LGUI) || inputCmp->IsPressed(pe::api::input::eKey::RGUI);
 		}
 	}
 
@@ -128,13 +128,13 @@ void ImguiSystem::OnUpdate(Scene* scene)
 		io.AddInputCharactersUTF8(charUTF);
 
 	// If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-	io.MouseDown[0] = inputCmp->IsPressed(eMouseButton::LEFT);
-	io.MouseDown[1] = inputCmp->IsPressed(eMouseButton::RIGHT);
-	io.MouseDown[2] = inputCmp->IsPressed(eMouseButton::MIDDLE);
+	io.MouseDown[0] = inputCmp->IsPressed(pe::api::input::eMouseButton::LEFT);
+	io.MouseDown[1] = inputCmp->IsPressed(pe::api::input::eMouseButton::RIGHT);
+	io.MouseDown[2] = inputCmp->IsPressed(pe::api::input::eMouseButton::MIDDLE);
 
 	// Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
 	if (io.WantSetMousePos)
-		gEngine->GetOutputQueue().PushBack({eOutputEventType::MOUSEPOS, Vector2i((int)io.MousePos.x, (int)io.MousePos.y)});
+		gEngine->GetOutputQueue().PushBack({pe::api::input::eOutputEventType::MOUSEPOS, Vector2i((int)io.MousePos.x, (int)io.MousePos.y)});
 	else
 		io.MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
 
@@ -147,13 +147,13 @@ void ImguiSystem::OnUpdate(Scene* scene)
 		if (io.MouseDrawCursor || imgui_cursor == ImGuiMouseCursor_None)
 		{
 			// Hide OS mouse cursor if imgui is drawing it or if it wants no cursor
-			gEngine->GetOutputQueue().PushBack({ eOutputEventType::CURSORHIDE });
+			gEngine->GetOutputQueue().PushBack({ pe::api::input::eOutputEventType::CURSORHIDE });
 		}
 		else
 		{
 			// Show OS mouse cursor
-			gEngine->GetOutputQueue().PushBack({ eOutputEventType::CURSORSET, GetCursorType(imgui_cursor) });
-			gEngine->GetOutputQueue().PushBack({ eOutputEventType::CURSORSHOW });
+			gEngine->GetOutputQueue().PushBack({ pe::api::input::eOutputEventType::CURSORSET, GetCursorType(imgui_cursor) });
+			gEngine->GetOutputQueue().PushBack({ pe::api::input::eOutputEventType::CURSORSHOW });
 		}
 	}
 
@@ -164,7 +164,7 @@ void ImguiSystem::OnUpdate(Scene* scene)
 	io.DisplaySize = ImVec2((float)screenSize.Width, (float)screenSize.Height);
 	io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
 
-	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(scene, Poly::eEngineTimer::GAMEPLAY));
+	float deltaTime = (float)(TimeSystem::GetTimerDeltaTime(scene, pe::api::time::eEngineTimer::GAMEPLAY));
 	io.DeltaTime = deltaTime;
 
 	if (io.WantCaptureMouse || io.WantCaptureKeyboard)

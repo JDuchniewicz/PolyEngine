@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Resources/ResourceBase.hpp>
+#include <pe/api/resources/ResourceBase.hpp>
 
-namespace Poly 
+namespace pe::api::resources 
 {
 
 	SILENCE_MSVC_WARNING(4275, "Exporting stl may cause incompatibility. We use same CRT so it's ok.")
@@ -28,5 +28,5 @@ namespace Poly
 		unsigned int BufferID;
 	};
 
-} // namespace Poly
+} // namespace pe::api::resources
 

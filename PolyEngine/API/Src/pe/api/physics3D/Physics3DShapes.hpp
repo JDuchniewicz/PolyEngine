@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <Resources/MeshResource.hpp>
-#include <Physics3D/Physics3DSystem.hpp>
-#include <Physics3D/Collider3DComponent.hpp>
+#include <pe/api/resources/MeshResource.hpp>
+#include <pe/api/physics3D/Physics3DSystem.hpp>
+#include <pe/api/physics3D/Collider3DComponent.hpp>
 
-namespace Poly
+namespace pe::api::physics3D
 {
 	struct Physics3DShapeImpl;
 	struct Physics3DStaticMeshSourceImpl;
@@ -102,4 +102,4 @@ namespace Poly
 		const float Radius;
 		const float Height;
 	};
-} // namespace Poly
+} // namespace pe::api::physics3D

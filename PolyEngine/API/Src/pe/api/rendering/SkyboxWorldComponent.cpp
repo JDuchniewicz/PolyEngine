@@ -1,12 +1,12 @@
 #include <EnginePCH.hpp>
 
-#include <Rendering/SkyboxWorldComponent.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/TextureResource.hpp>
+#include <pe/api/rendering/SkyboxWorldComponent.hpp>
+#include <pe/api/resources/ResourceManager.hpp>
+#include <pe/api/resources/TextureResource.hpp>
 
-using namespace Poly;
+using namespace pe::api::rendering;
 
-RTTI_DEFINE_COMPONENT(::Poly::SkyboxWorldComponent)
+RTTI_DEFINE_COMPONENT(::pe::api::rendering::SkyboxWorldComponent)
 
 SkyboxWorldComponent::SkyboxWorldComponent(const String& panoramaPath, const eResourceSource source)
 	: Tint(Color::WHITE)

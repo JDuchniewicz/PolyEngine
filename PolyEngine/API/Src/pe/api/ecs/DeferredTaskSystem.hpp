@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Defines.hpp>
-#include <ECS/DeferredTaskImplementation.hpp>
-#include <ECS/DeferredTaskWorldComponent.hpp>
-#include <ECS/Scene.hpp>
+#include <pe/api/ecs/DeferredTaskImplementation.hpp>
+#include <pe/api/ecs/DeferredTaskWorldComponent.hpp>
+#include <pe/api/ecs/Scene.hpp>
 
-namespace Poly
+namespace pe::api::ecs
 {
 	namespace DeferredTaskSystem
 	{
